@@ -75,6 +75,13 @@ class LoadingHandler {
 }
 var loadingHandler = new LoadingHandler();
 
+function closeDrawer() {
+  var materializeHandlers = document.getElementsByClassName('mdl-layout')[0].MaterialLayout;
+  if (materializeHandlers.drawer_.classList.contains('is-visible')) {
+    materializeHandlers.toggleDrawer();
+  }
+}
+
 var stateObj = {};
 function makeNavFn(newEndpoint) {
   if (!newEndpoint) {
@@ -85,6 +92,7 @@ function makeNavFn(newEndpoint) {
     loadingHandler.showLoading();
     history.pushState(stateObj, `${newEndpoint || 'home'} title`, `/${newEndpoint}`);
     loadingHandler.checkDone(newEndpoint || 'home');
+    closeDrawer();
   }
 }
 function bindNav(pageName) {
@@ -92,6 +100,7 @@ function bindNav(pageName) {
   document.getElementById(`header-${pageName}`).onclick = makeNavFn(pageName);
 }
 document.getElementById('header-logo').onclick = makeNavFn();
+document.getElementById('drawer-home').onclick = makeNavFn();
 ['about', 'login', 'contact'].forEach(function(navItem) {
   bindNav(navItem);
 });

@@ -292,7 +292,6 @@
 
     class Item {
 		constructor(el) {
-			console.log(el);
 			this.DOM = {};
             this.DOM.el = el;
             this.DOM.product = this.DOM.el;
@@ -300,7 +299,6 @@
 						this.DOM.top = this.DOM.product.querySelector('.card__top');
 						this.DOM.bottom = this.DOM.product.querySelector('.card__bottom')
             this.DOM.productImg = this.DOM.top.children[0];
-						console.log(this.DOM);
             this.info = {
                 img: this.DOM.productImg.src,
                 title: this.DOM.product.querySelector('.card-title').innerHTML,

@@ -30,7 +30,6 @@ class ParallaxManager {
   }
   createHandlers() {
     this.nodes.forEach(this.createOne);
-    console.log(this.fnRefs);
   }
   executeOne(fn) {
     return requestAnimationFrame(fn);

@@ -67,7 +67,6 @@ class SearchUtil {
   	return arrayOfStrings.reduce(
       (filteredStrings, valOriginalCase) => {
         const result = { stringValue: valOriginalCase };
-        console.log('valOriginalCase', valOriginalCase);
     		const lowerCaseItemVal = valOriginalCase.toLowerCase();
     		const unMatchedSubStrings = lowerCaseItemVal.split(lowerCaseSearchVal);
     		if (unMatchedSubStrings.length <= 1) {
