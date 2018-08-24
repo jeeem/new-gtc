@@ -1,0 +1,160 @@
+@import './vars.sass'
+
+@keyframes fade-up
+  0%
+    opacity: 0
+    transform: translateY(50px)
+
+  100%
+    opacity: 1
+    transform: translateY(0)
+
+@mixin fadeUp($delay)
+  animation-delay: $delay
+  animation-duration: 2s
+  animation-fill-mode: forwards
+  animation-name: fade-up
+  opacity: 0
+  transform: translateY(50px)
+
+.about-section
+  align-items: center
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+  justify-content: center
+  max-width: 100%
+  position: relative
+  &--first
+    background-image: url(/images/img_mountains01.jpg)
+    background-position: center
+    background-size: cover
+    color: white
+    height: calc(100vh - 80px)
+    text-align: center
+    h1
+      @include fadeUp(1s)
+      font-size: 60px
+      letter-spacing: 2px
+      font-weight: 400
+      margin-bottom: 40px
+      margin-top: auto
+      transition: font-size 0.4s
+      @media (max-width: 600px)
+          font-size: 50px
+    h3
+      @include fadeUp(1.5s)
+      font-size: 16px
+      letter-spacing: .2em
+      font-weight: 300
+      line-height: 1.25em
+      margin-bottom: 40px
+      text-transform: uppercase
+      transition: font-size 0.4s
+      @media (max-width: 600px)
+          font-size: 12px
+    span
+      @include fadeUp(2s)
+      font-size: 13px
+      font-family: 'Roboto Condensed', Helvetica, Helvetica Neue, Arial, sans-serif
+      letter-spacing: 8px
+      margin-bottom: 30px
+      margin-top: auto
+      transition: font-size 0.4s
+      @media (max-width: 600px)
+          font-size: 10px
+
+  &--second
+    background-image: url(/images/img_crowd.jpg)
+    background-position: center
+    background-size: cover
+    color: white
+    text-align: center
+    h1
+      font-size: 3em
+      letter-spacing: 4px
+      font-weight: 100
+      line-height: 1em
+      width: 50%
+      min-width: 300px
+      line-height: 1.5em
+      transition: font-size 0.4s
+      @media (max-width: 600px)
+          font-size: 2em
+    span
+      padding: 5px 10px 5px 10px
+      background: red
+      font-weight: 900
+      border-radius: 10px
+  &--third
+    background-image: url(/images/img_red01.jpg)
+    background-position: center
+    background-size: cover
+    color: white
+    padding: 30px 0 30px 0
+    text-align: center
+    &__image
+      height: auto
+      margin-bottom: 40px
+      margin-top: 40px
+      width: 300px
+  &--fourth
+    background-color: black
+    color: white
+    padding: 30px 0 30px 0
+    text-align: center
+    &__center
+      .center-image
+        height: auto
+        margin-bottom: 40px
+        margin-top: 40px
+        min-width: 100px
+        width: 20%
+  &--fifth
+    background-image: url(/images/img_red02.jpg)
+    background-position: center
+    background-size: cover
+    color: white
+    padding: 30px 0 40px 0
+    text-align: center
+    &__video
+      height: auto
+      margin-bottom: 40px
+      margin-top: 40px
+      width: 300px
+.about-type
+  &__top
+    align-items: center
+    display: flex
+    img
+      height: 22px
+      width: auto
+    .top-text
+      min-width: 104px
+      max-width: 104px
+      white-space: normal
+      font-size: 22px
+      line-height: 51px
+      font-weight: 400
+      color: rgb(255, 255, 255)
+      letter-spacing: 1px
+      font-family: "Roboto Condensed"
+      text-transform: uppercase
+  &__bottom
+    span
+      white-space: normal
+      font-size: 9px
+      line-height: 17px
+      font-weight: 700
+      color: rgba(255, 255, 255, 0.6)
+      letter-spacing: 3px
+      font-family: "Roboto Condensed"
+    p
+      white-space: normal
+      font-size: 22px
+      line-height: 29px
+      max-width: 390px
+      font-weight: 400
+      color: rgb(255, 255, 255)
+      letter-spacing: 1px
+      font-family: "Roboto Condensed"

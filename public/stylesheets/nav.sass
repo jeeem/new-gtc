@@ -1,0 +1,56 @@
+@import './vars.sass'
+
+.mdl-layout__header
+  height: $nav-height
+  justify-content: center
+  .mdl-textfield.is-focused .mdl-textfield__input
+    border-color: white
+.mdl-layout__header-row
+  position: relative
+.mdl-navigation__link
+  cursor: pointer
+  color: #FFFFFF
+  letter-spacing: 3px
+  font-size: 13px
+.mdl-layout__header--transparent.mdl-layout__header--transparent,
+.mdlext-layout__sticky-header
+  background: #12121a
+.mdl-layout__drawer-button
+  color: white
+  display: none
+  top: 13px
+  @media (max-width: 1024px)
+    display: block
+.nav
+  &__logo-container
+    display: flex
+    flex-direction: column
+    img
+      height: 30px
+      width: auto
+.search-results
+  background: white
+  border-left: 1px solid black
+  border-right: 1px solid black
+  border-top: 1px solid black
+  color: black
+  font-weight: 100
+  position: absolute
+  bottom: 0
+  right: 40px
+  transform: translateY(100%)
+  letter-spacing: 1.5px
+  text-transform: uppercase
+  max-height: 400px
+  overflow: auto
+  font-size: 12px
+  &::-webkit-scrollbar
+    width: 0px
+    background: transparent
+  &__item
+    align-items: center
+    border-bottom: 1px solid black
+    display: flex
+    padding: 10px
+    b
+      color: red

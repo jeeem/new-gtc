@@ -1,0 +1,362 @@
+@keyframes loaderAnim
+  to
+    opacity: 1
+
+@keyframes slideup
+  from
+    opacity: 0
+    transform: translateY(100px)
+
+  to
+    opacity: 1
+    transform: translateY(0)
+
+.hidden
+  position: absolute
+  overflow: hidden
+  width: 0
+  height: 0
+  pointer-events: none
+
+/* Icons
+
+.icon
+  display: block
+  width: 1.5em
+  height: 1.5em
+  margin: 0 auto
+  fill: currentColor
+
+main
+  position: relative
+  width: 100%
+
+.grid
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
+
+.grid__item
+  padding: 0 4vw
+
+.product
+  height: 100%
+  padding-top: 10em
+  position: relative
+  cursor: pointer
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+
+.product__bg
+  background: transparent
+  position: relative
+
+.product__img
+  max-height: 25em
+  margin: 0 auto
+  display: block
+  position: absolute
+  top: 0
+  left: 50%
+  pointer-events: none
+  transform: translate3d(-50%, 0, 0)
+
+.product__title
+  position: relative
+  margin: 0.5em 0 0
+  font-size: 1.75em
+  color: white
+  font-family: "Playfair Display", serif
+  font-weight: 700
+
+.product__subtitle
+  position: relative
+  margin: 0
+  text-transform: uppercase
+  color: white
+  font-size: 0.85em
+  letter-spacing: 0.115em
+
+.product:hover .product__subtitle
+  color: white
+
+.product__description, .product__price
+  opacity: 0
+  position: absolute
+
+.details
+  position: fixed
+  width: 100%
+  height: 100%
+  bottom: 0
+  left: 0
+  padding: 0
+  z-index: 1000
+  display: flex
+  flex-direction: column
+  align-items: flex-end
+  pointer-events: none
+  justify-content: center
+
+.details--open
+  pointer-events: auto
+
+.details > *
+  position: relative
+  opacity: 0
+
+.details__bg
+  width: 100%
+  position: fixed
+  left: 0
+
+.details__bg--up
+  top: 0
+  height: 100vh
+  background: rgba(18,18,26, 0.5)
+
+.details__bg--down
+  top: 0
+  height: 100vh
+  background: rgb(18,18,26)
+
+.details__img
+  position: absolute
+  left: 0
+  width: auto
+  height: auto
+  max-width: 50vw
+  max-height: 100vh
+
+.details__bg, .details__img
+  transform-origin: 0 0
+
+.details__title
+  width: calc(50% - 30px)
+  font-size: 3em
+  margin: 0.25em 0 1em 0
+  color: white
+  font-weight: 400
+
+.details__subtitle
+  width: calc(50% - 30px)
+  color: red
+  text-transform: uppercase
+  margin: -1.5em 0 0.1em
+  letter-spacing: 0.115em
+  font-size: 1.5em
+  margin-top: -200px
+
+.details__description
+  line-height: 1.5
+  font-weight: bold
+  max-width: 50%
+  margin: 2em 0 0 0
+  color: white
+
+.details__price
+  font-size: 3em
+  font-weight: bold
+  color: white
+
+.details__close
+  position: absolute
+  top: 0
+  right: 0
+  border: 0
+  background: none
+  margin: 2em
+  cursor: pointer
+  font-size: 0.85em
+  color: white
+
+.dummy-menu
+  border: 0
+  background: none
+  padding: 0
+  margin: 2.75em 2.5em 0 0
+  position: fixed
+  top: 0
+  right: 0
+  font-size: 0.85em
+  color: white
+  cursor: pointer
+  z-index: 1000
+
+.details__deco
+  display: none
+
+/* Related demos
+
+.content--related
+  padding: 8em 5vw
+  font-weight: bold
+  text-align: center
+  background: #000
+  color: #f0f0f0
+  a:hover
+    color: #fff
+  h2
+    font-size: 1.25em
+  .demos
+    padding-bottom: 3em
+
+.media-item
+  display: inline-block
+  padding: 1em
+  vertical-align: top
+  transition: color 0.3s
+
+.media-item__img
+  max-width: 100%
+  opacity: 0.8
+  transition: opacity 0.3s
+
+.media-item
+  &:hover .media-item__img, &:focus .media-item__img
+    opacity: 1
+
+.media-item__title
+  font-size: 1em
+  margin: 0
+  padding: 0.5em
+
+@media screen and (max-width: 40em)
+  .grid
+    padding: 0 1vw
+  .grid__item
+    padding: 0 2vw
+  .product__img
+    max-height: 19em
+  .product__title
+    font-size: 1.25em
+  .product__subtitle
+    font-size: 0.75em
+  .details
+    padding: 30vh 0 5vh 10vw
+  .details__bg--down
+    top: 30vh
+    height: 70vh
+  .details__title
+    font-size: 2em
+  .details__subtitle
+    font-size: 1em
+  .details__price
+    font-size: 1.5em
+  .details__description
+    max-width: 70%
+    font-size: 0.85em
+    margin: 1em 0 0 0
+  .details__deco
+    height: 7px
+    width: 4em
+  .details__img
+    right: -12vh
+  .codrops-header
+    padding: 1em 4em
+  .codrops-header__title
+    font-weight: bold
+    padding-bottom: 0.25em
+    text-align: center
+    font-size: 1.25em
+  .dummy-menu
+    margin: 1.75em 1.5em 0 0
+
+.details--open .details__assets-container
+    bottom: 0
+    color: white
+    display: flex
+    opacity: 1
+    position: absolute
+    width: 50vw
+    justify-content: center
+    padding-bottom: 70px
+.details .details__assets-col
+  animation: none
+
+.details--open .details__assets-col
+  animation-duration: 1s
+  animation-fill-mode: forwards
+  animation-name: slideup
+
+.details--open .details__assets-audio
+  animation-delay: 0s
+
+.details--open .details__assets-video
+  animation-delay: 0.5s
+
+.details--open .details__assets-photo
+  animation-delay: 1s
+
+.details__assets-col
+  opacity: 0
+  align-items: center
+  display: flex
+  flex-direction: column
+  justify-content: space-around
+  margin: 10px
+.details__asset
+  align-items: center
+  display: flex
+  font-size: 20px
+  line-height: 30px
+  margin-bottom: 30px
+  width: 100%
+  img
+    height: 30px
+    margin-right: 10px
+    width: auto
+.details__asset-icon
+  background: #333
+  width: 80px
+  height: 66px
+  margin-bottom: 30px
+  display: flex
+  flex-direction: row
+  align-items: center
+  align-content: center
+  text-align: center
+  justify-content: center
+  margin-right: 10px
+  border-radius: 10px
+  cursor: pointer
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1)
+  &:hover
+    transform: translate3d(-3px, -3px, 100px)
+    background: red
+    box-shadow: 0 0 30px rgba(0, 0, 0, .8)
+  img
+    height: auto
+    width: 40px
+
+@keyframes close-in
+  0%
+    opacity: 0
+
+  100%
+    opacity: 1
+
+.details--open-init
+  background: #12121a
+  .details__close
+    animation-delay: 1s
+    animation-duration: 1s
+    animation-fill-mode: forwards
+    animation-name: close-in
+  .details__img
+    animation-delay: 0.7s
+    animation-duration: 1s
+    animation-fill-mode: forwards
+    animation-name: close-in
+  .details__subtitle
+    animation-delay: 0.5s
+    animation-duration: 1s
+    animation-fill-mode: forwards
+    animation-name: close-in
+    // font-size: 2em
+    // letter-spacing: 2px
+  .details__title
+    animation-delay: 0.7s
+    animation-duration: 1s
+    animation-fill-mode: forwards
+    animation-name: close-in
+    // font-size: 2em
+    // letter-spacing: 2px

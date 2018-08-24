@@ -1,0 +1,20 @@
+.tobi__zoom-icon
+  display: none
+.lightbox
+  color: inherit
+.tobi--zoom
+  align-items: center
+  display: flex
+.tobi-overlay
+  background-color: black
+  animation-duration: 0.2s
+  opacity: 0
+  transform: scale(0.9)
+  transition: all 0.3s
+  &[aria-hidden="false"]
+    opacity: 1
+    transform: scale(1)
+  &[aria-hidden="true"]
+    display: block
+    pointer-events: none
+    opacity: 0

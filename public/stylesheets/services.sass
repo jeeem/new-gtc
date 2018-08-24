@@ -1,0 +1,154 @@
+.video-wrapper
+  color: white
+  cursor: pointer
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  height: 100vh
+  overflow: hidden
+  position: relative
+  &:hover
+    color: red
+    .video-overlay-play-button
+      opacity: 0.7
+      transform: scale(1)
+  .video-logo,
+  .artist-name,
+  .info-container
+    opacity: 1
+    transform: scale(1)
+    transition: all 0.4s
+  .video-logo
+    align-items: center
+    display: flex
+    left: 50px
+    position: absolute
+    top: 50px
+    img
+      height: 30px
+    span
+      color: white
+      font-size: 25px
+      margin-left: 10px
+  .artist-name
+    color: white
+    position: absolute
+    top: 150px
+    left: 50px
+    font-weight: 900
+    font-size: 75px
+    transition-delay: 0.1s
+  .info-container
+    bottom: 25px
+    color: white
+    left: 50px
+    position: absolute
+    transition-delay: 0.2s
+    span
+      font-family: Lato, sans-serif
+      font-size: 25px
+      margin-bottom: 25px
+      letter-spacing: 2px
+    h2
+      font-weight: 900
+      font-size: 37px
+      margin-top: 25px
+      padding-right: 50px
+      line-height: 1.3
+      letter-spacing: 1px
+  .video-overlay-play-button
+    opacity: 0.4
+    width: 100px
+    transition: all 0.2s
+    transform: scale(0.9)
+  > video
+    position: absolute
+    top: 0
+    left: 0
+    display: block
+    width: 100%
+    height: 100%
+    object-fit: cover
+    z-index: -2
+  .full-video-poster
+    background-image: url(/images/revsliders/covers/5.png)
+    background-position: center
+    background-size: cover
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: -1
+    pointer-events: none
+    opacity: 1
+    transition: opacity 0.4s
+    transition-delay: 0.5s
+    background-repeat: no-repeat
+    transform: scale(1.2)
+  .darken-poster
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    background: rgba(0, 0, 0, 0.4)
+  &.isPlaying
+    .video-logo,
+    .artist-name,
+    .info-container
+      opacity: 0
+      transform: scale(0.8)
+    .full-video-poster
+      opacity: 0
+
+
+
+.about-services
+  display: flex
+  flex-direction: row
+  @media (max-width: 760px)
+    flex-direction: column
+  &__left
+    align-items: center
+    display: flex
+    flex-grow: 1
+    height: 480px
+    justify-content: center
+    width: 100%
+    video
+      position: absolute
+      max-width: 100%
+  &__right
+    z-index: 1
+    span
+      color: white
+      font-weight: 300
+      letter-spacing: .2em
+      line-height: 1.25em
+      opacity: 0.5
+      text-transform: uppercase
+    img
+      margin-bottom: 10px
+      width: 30px
+  &__medium
+    align-items: center
+    background-position: center
+    background-repeat: no-repeat
+    background-size: cover
+    display: flex
+    flex-direction: column
+    justify-content: center
+    padding: 30px 0
+    width: 310px
+    @media (max-width: 760px)
+      width: 100%
+  &--radio
+    background-image: url('/images/services/bg_radio.jpg')
+  &--tv
+    background-image: url('/images/services/bg_tv.jpg')
+  &--experience
+    background-image: url('/images/services/bg_experience.jpg')
+  &--digital
+    background-image: url('/images/services/bg_digital.jpg')

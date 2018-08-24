@@ -1,0 +1,142 @@
+@import './vars.sass'
+
+.cards-container
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(calc(25% - 15px), 1fr))
+  grid-gap: 15px
+  flex-wrap: wrap
+  margin: 0 auto
+  max-width: 1200px
+  padding-top: $card-gutter-width
+  opacity: 1
+  @media (max-width: 939px)
+    justify-content: center
+  &--open
+    .card
+      opacity: 0
+
+.card-subtext
+  color: red
+  font-size: 10px
+  letter-spacing: 2px
+  line-height: initial
+  margin: 0 0 3px 0
+  text-transform: uppercase
+.card-title
+  color: #FFF
+  font-size: initial
+  letter-spacing: 3px
+  line-height: initial
+  margin: 0 0 auto 0
+  text-transform: uppercase
+
+@keyframes fade-up
+  0%
+    opacity: 0
+    transform: translateY(50px)
+
+  100%
+    opacity: 1
+    transform: translateY(0)
+
+@mixin fadeUp($delay)
+  animation-delay: $delay
+  animation-duration: 1s
+  animation-fill-mode: forwards
+  animation-name: fade-up
+  opacity: 0
+  transform: translateY(10px)
+
+.card
+  &:nth-child(1)
+    @include fadeUp(0.5s)
+  &:nth-child(2)
+    @include fadeUp(1s)
+  &:nth-child(3)
+    @include fadeUp(1.5s)
+  &:nth-child(4)
+    @include fadeUp(2s)
+  &:nth-child(5)
+    @include fadeUp(2.5s)
+  &:nth-child(6)
+    @include fadeUp(3s)
+  cursor: pointer
+  display: flex
+  flex-direction: column
+  margin-bottom: $card-gutter-width
+  margin-right: $card-gutter-width
+  width: 100%
+  transition: opacity 0.2s
+  @media (max-width: 750px)
+    grid-column-end: span 2
+  @media (max-width: 557px)
+    grid-column-end: span 4
+    margin-right: 0
+    width: 100%
+  &:nth-child(3n+3)
+    margin-right: 0
+    @media (max-width: 939px)
+      margin-right: $card-gutter-width
+    @media (max-width: 557px)
+      margin-right: 0
+  &:nth-child(2n+2)
+    @media (max-width: 939px)
+      margin-right: 0
+  &__top
+    display: flex
+    flex-direction: column
+    img
+      height: auto
+      width: 100%
+  &__bottom
+    display: flex
+    flex-direction: column
+    height: 90px
+    justify-content: space-between
+    overflow: hidden
+    padding: 20px
+    position: relative
+
+.card--large
+  grid-column-end: span 2
+  @media (max-width: 557px)
+    grid-column-end: span 4
+
+.card-blur
+  background-size: 200%
+  background-position: center bottom
+  filter: blur(15px)
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  top: 0
+  z-index: -2
+.card-filter
+  background-color: rgba(50, 50, 50, .7)
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  top: 0
+  z-index: -1
+.card-button
+  align-self: flex-start
+  background: transparent
+  border: 1px solid
+  color: #FFF
+  font-size: 13px
+  font-weight: 700
+  letter-spacing: 1px
+  margin-bottom: 10px
+  opacity: .3
+  padding: 10px 20px
+  text-align: center
+  transition: all .1s linear
+  &:hover
+    background: red
+    color: #fff
+    opacity: 1
+    border-color: red
+    transform: scale(1.05)
+    box-shadow: 3px 3px 30px rgba(0, 0, 0, .5)
