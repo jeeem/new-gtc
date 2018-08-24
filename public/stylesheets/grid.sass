@@ -135,6 +135,10 @@ main
   margin: 0.25em 0 1em 0
   color: white
   font-weight: 400
+  @media (max-width: 850px)
+    font-size: 2.5em
+  @media (max-width: 761px)
+    font-size: 2em
 
 .details__subtitle
   width: calc(50% - 30px)
@@ -267,8 +271,9 @@ main
     opacity: 1
     position: absolute
     width: 50vw
-    justify-content: center
     padding-bottom: 70px
+    padding-left: 20px
+    box-sizing: border-box
 .details .details__assets-col
   animation: none
 
@@ -296,14 +301,12 @@ main
 .details__asset
   align-items: center
   display: flex
-  font-size: 20px
+  font-size: 17px
   line-height: 30px
   margin-bottom: 30px
   width: 100%
-  img
-    height: 30px
-    margin-right: 10px
-    width: auto
+  i
+    margin-right: 3px
 .details__asset-icon
   background: #333
   width: 80px

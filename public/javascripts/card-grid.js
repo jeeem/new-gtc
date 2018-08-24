@@ -14,87 +14,87 @@
             this.DOM = {};
 
             const detailsTmpl = `
-            <div class="details__bg details__bg--up"></div>
-            <div class="details__bg details__bg--down"></div>
-            <img class="details__img" src="" alt="img 01"/>
-            <h3 class="details__subtitle"></h3>
-            <h2 class="details__title"></h2>
-            <div class="details__deco"></div>
-            <div
-              class="details__assets-container">
+              <div class="details__bg details__bg--up"></div>
+              <div class="details__bg details__bg--down"></div>
+              <img class="details__img" src="/images/01.jpg" alt="img 01"/>
+              <h3 class="details__subtitle">{{subTitle}}</h3>
+              <h2 class="details__title">{{tour}}</h2>
+              <div class="details__deco"></div>
               <div
-                class="details__assets-col details__assets-audio">
+                class="details__assets-container">
                 <div
-                  class="details__asset-icon details__audio-icon">
-                  <img src="/images/asset-audio.png" />
+                  class="details__assets-col details__assets-audio">
+                  <div
+                    class="details__asset-icon details__audio-icon">
+                    <img src="/images/asset-audio.png" />
+                  </div>
+                  <div
+                    class="details__asset details__audio-asset">
+                    <a
+                      href="#lightbox-audio-1"
+                      data-type="html"
+                      class="lightbox">
+                      <i class="material-icons">mic</i><b>Generic</b>
+                    </a>
+                  </div>
+                  <div
+                    class="details__asset details__audio-asset">
+                    <a
+                      href="#lightbox-audio-2"
+                      data-type="html"
+                      class="lightbox">
+                      <i class="material-icons">mic</i><b>Amex</b>
+                    </a>
+                  </div>
                 </div>
-                <div
-                  class="details__asset details__audio-asset">
-                  <a
-                    href="#lightbox-audio-1"
-                    data-type="html"
-                    class="lightbox">
-                    <img src="/images/asset-audio.png" /><b>Generic</b>
-                  </a>
+                <div class="details__assets-col details__assets-video">
+                  <div
+                    class="details__asset-icon details__audio-icon">
+                    <img src="/images/asset-video.png" />
+                  </div>
+                  <div
+                    class="details__asset details__audio-asset">
+                    <a
+                      href="#lightbox-video-1"
+                      data-type="html"
+                      class="lightbox">
+                      <i class="material-icons">play_circle_outline</i><b>Generic</b>
+                    </a>
+                  </div>
+                  <div
+                    class="details__asset details__audio-asset">
+                    <a
+                      href="#lightbox-video-2"
+                      data-type="html"
+                      class="lightbox">
+                      <i class="material-icons">play_circle_outline</i><b>Amex</b>
+                    </a>
+                  </div>
                 </div>
-                <div
-                  class="details__asset details__audio-asset">
-                  <a
-                    href="#lightbox-audio-2"
-                    data-type="html"
-                    class="lightbox">
-                    <img src="/images/asset-audio.png" /><b>Amex</b>
-                  </a>
+                <div class="details__assets-col details__assets-photo">
+                  <div
+                    class="details__asset-icon details__audio-icon">
+                    <img src="/images/asset-image.png" />
+                  </div>
+                  <div
+                    class="details__asset details__audio-asset">
+                    <a
+                      href="/images/01.jpg"
+                      class="lightbox">
+                      <i class="material-icons">create</i><b>Generic</b>
+                    </a>
+                  </div>
+                  <div
+                    class="details__asset details__audio-asset">
+                    <a
+                      href="/images/02.jpg"
+                      class="lightbox">
+                      <i class="material-icons">create</i><b>Amex</b>
+                    </a>
+                  </div>
                 </div>
               </div>
-              <div class="details__assets-col details__assets-video">
-                <div
-                  class="details__asset-icon details__audio-icon">
-                  <img src="/images/asset-video.png" />
-                </div>
-                <div
-                  class="details__asset details__audio-asset">
-                  <a
-                    href="#lightbox-video-1"
-                    data-type="html"
-                    class="lightbox">
-                    <img src="/images/asset-video.png" /><b>Generic</b>
-                  </a>
-                </div>
-                <div
-                  class="details__asset details__audio-asset">
-                  <a
-                    href="#lightbox-video-2"
-                    data-type="html"
-                    class="lightbox">
-                    <img src="/images/asset-video.png" /><b>Amex</b>
-                  </a>
-                </div>
-              </div>
-              <div class="details__assets-col details__assets-photo">
-                <div
-                  class="details__asset-icon details__audio-icon">
-                  <img src="/images/asset-image.png" />
-                </div>
-                <div
-                  class="details__asset details__audio-asset">
-                  <a
-                    href="/images/01.jpg"
-                    class="lightbox">
-                    <img src="/images/asset-image.png" /><b>Generic</b>
-                  </a>
-                </div>
-                <div
-                  class="details__asset details__audio-asset">
-                  <a
-                    href="/images/02.jpg"
-                    class="lightbox">
-                    <img src="/images/asset-image.png" /><b>Amex</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <button class="details__close"><svg class="icon icon--cross"><use xlink:href="#icon-cross"></use></svg></button>
+              <button class="details__close"><svg class="icon icon--cross"><use xlink:href="#icon-cross"></use></svg></button>
             `;
             if (!document.getElementsByClassName('details').length) {
               this.DOM.details = document.createElement('div');

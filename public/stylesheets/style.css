@@ -316,7 +316,7 @@
       min-width: 300px;
       line-height: 1.5em;
       transition: font-size 0.4s; }
-      @media (max-width: 600px) {
+      @media (max-width: 680px) {
         .about-section--second h1 {
           font-size: 2em; } }
     .about-section--second span {
@@ -427,7 +427,8 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  min-height: 628px; }
   .video-wrapper:hover {
     color: red; }
     .video-wrapper:hover .video-overlay-play-button {
@@ -459,6 +460,9 @@
     font-weight: 900;
     font-size: 75px;
     transition-delay: 0.1s; }
+    @media (max-width: 761px) {
+      .video-wrapper .artist-name {
+        font-size: 40px; } }
   .video-wrapper .info-container {
     bottom: 25px;
     color: white;
@@ -470,6 +474,9 @@
       font-size: 25px;
       margin-bottom: 25px;
       letter-spacing: 2px; }
+      @media (max-width: 761px) {
+        .video-wrapper .info-container span {
+          font-size: 19px; } }
     .video-wrapper .info-container h2 {
       font-weight: 900;
       font-size: 37px;
@@ -477,6 +484,9 @@
       padding-right: 50px;
       line-height: 1.3;
       letter-spacing: 1px; }
+      @media (max-width: 761px) {
+        .video-wrapper .info-container h2 {
+          font-size: 17px; } }
   .video-wrapper .video-overlay-play-button {
     opacity: 0.4;
     width: 100px;
@@ -707,6 +717,12 @@ main {
   margin: 0.25em 0 1em 0;
   color: white;
   font-weight: 400; }
+  @media (max-width: 850px) {
+    .details__title {
+      font-size: 2.5em; } }
+  @media (max-width: 761px) {
+    .details__title {
+      font-size: 2em; } }
 
 .details__subtitle {
   width: calc(50% - 30px);
@@ -837,8 +853,9 @@ main {
   opacity: 1;
   position: absolute;
   width: 50vw;
-  justify-content: center;
-  padding-bottom: 70px; }
+  padding-bottom: 70px;
+  padding-left: 20px;
+  box-sizing: border-box; }
 
 .details .details__assets-col {
   animation: none; }
@@ -868,14 +885,12 @@ main {
 .details__asset {
   align-items: center;
   display: flex;
-  font-size: 20px;
+  font-size: 17px;
   line-height: 30px;
   margin-bottom: 30px;
   width: 100%; }
-  .details__asset img {
-    height: 30px;
-    margin-right: 10px;
-    width: auto; }
+  .details__asset i {
+    margin-right: 3px; }
 
 .details__asset-icon {
   background: #333;
@@ -981,6 +996,9 @@ main {
     animation-duration: 1s;
     animation-fill-mode: forwards;
     animation-name: contactleft; }
+    @media (max-width: 850px) {
+      .contact__left {
+        position: absolute; } }
   .contact__map {
     width: 450px;
     height: calc(450px * 1.3); }
@@ -1125,7 +1143,10 @@ main {
   display: none; }
 
 .lightbox {
-  color: inherit; }
+  align-items: center;
+  color: inherit;
+  display: flex;
+  text-decoration: none; }
 
 .tobi--zoom {
   align-items: center;
