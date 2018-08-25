@@ -5,6 +5,7 @@ var rp = require('request-promise-native');
 /* GET home page. */
 
 var config = require('../config');
+var utils = require('../lib/utils');
 
 router.get('/search/:string', function(req, res, next) {
   console.log('req.params.string', req.params.string);
@@ -65,6 +66,12 @@ router.get('/*', function(req, res, next) {
             if (spotsItem.printItems) {
               return thisCard.printItems = spotsItem.printItems;
             }
+            if (!thisCard.subTitle && thisCard.subTitle !== false) {
+              let parsedName = utils.parseTourName(thisCard.tourName.toUpperCase());
+              console.log('PARSED NAME \n\n\n PARSED NAME\n\n\n', parsedName);
+              thisCard.tourName = parsedName.parsed ? parsedName.title : thisCard.tourName.toUpperCase();
+              thisCard.subTitle = parsedName.parsed ? parsedName.subTitle : false;
+            }
           });
         });
         templateVars.homeCards = newdata[0].cards;
@@ -73,10 +80,8 @@ router.get('/*', function(req, res, next) {
     })
     .then(() => {
       return res.render('index', templateVars);
-    })
+    });
   // res.render('index', templateVars);
 });
-
-
 
 module.exports = router;

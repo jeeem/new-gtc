@@ -57,9 +57,9 @@ CARDS
 
       <div
         class="card__bottom">
-        <h3 class="card-subtext">
-          GC
-        </h3>
+          <h3 class="card-subtext">
+            {{#if this.subTitle}}{{this.subTitle}}{{/if}}
+          </h3>
         <h2 class="card-title">{{this.tourName}}</h2>
         <div class="card-button">View Project</div>
         <div

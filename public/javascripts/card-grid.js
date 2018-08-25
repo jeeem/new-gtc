@@ -199,6 +199,7 @@
               return this.DOM.details.classList.remove('details--open');
             }
             this.isAnimating = true;
+            this.DOM.img.src = '#';
 
 
             let gridParent = document.querySelector('.cards-container');
@@ -265,15 +266,37 @@
     };
 
     function overrideTobi(tvSpots, radioSpots, printItems) {
-      console.log('tvSpots', tvSpots[0]);
-      document.getElementById('lightbox-video-1').querySelector('video').src = JSON.parse(tvSpots)[0].spotURL;
-      document.getElementById('lightbox-audio-1').querySelector('audio').src = JSON.parse(radioSpots)[0].spotURL;
-      document.getElementsByClassName('lightbox-image')[0].href = JSON.parse(printItems)[0].thumbnailURL;
-      if (tobi) {
-        return tobi = new Tobi({});
+      console.log(tvSpots, radioSpots, printItems);
+      tvSpots = tvSpots ? JSON.parse(tvSpots) : null;
+      radioSpots = radioSpots ? JSON.parse(radioSpots) : null;
+      printItems = printItems ? JSON.parse(printItems) : null;
+      if (tvSpots) {
+        document.getElementsByClassName('details__assets-video')[0].style.display = '';
+        document.getElementsByClassName('lightbox-video')[0].classList.add('lightbox');
+        document.getElementById('lightbox-video-1').querySelector('video').src = tvSpots[0].spotURL;
+      } else {
+        document.getElementsByClassName('details__assets-video')[0].style.display = 'none';
+        document.getElementsByClassName('lightbox-video')[0].classList.remove('lightbox');
       }
-      var tobi = new Tobi({});
-      return;
+      if (radioSpots) {
+        document.getElementsByClassName('details__assets-audio')[0].style.display = '';
+        document.getElementsByClassName('lightbox-audio')[0].classList.add('lightbox');
+        document.getElementById('lightbox-audio-1').querySelector('audio').src = radioSpots[0].spotURL;
+      } else {
+        document.getElementsByClassName('details__assets-audio')[0].style.display = 'none';
+        document.getElementsByClassName('lightbox-audio')[0].classList.remove('lightbox');
+      }
+      if (printItems) {
+        document.getElementsByClassName('details__assets-photo')[0].style.display = '';
+        document.getElementsByClassName('lightbox-image')[0].classList.add('lightbox');
+        document.getElementsByClassName('lightbox-image')[0].href = printItems[0].thumbnailURL;
+      } else {
+        document.getElementsByClassName('details__assets-photo')[0].style.display = 'none';
+        document.getElementsByClassName('lightbox-image')[0].classList.remove('lightbox');
+      }
+      if (tobi) {
+        tobi = new Tobi({});
+      }
     }
     class Item {
 		constructor(el) {
@@ -294,6 +317,9 @@
 			this.initEvents();
 		}
         initEvents() {
+            this.DOM.product.onmouseover = (e) => {
+              DOM.details.fill(this.info);
+            }
             this.DOM.product.addEventListener('click', () => {
               let dat = this.DOM.el.dataset;
               console.log('dat', dat);
@@ -303,10 +329,12 @@
         }
         open() {
             DOM.details.fill(this.info);
-            DOM.details.open({
-                productBg: this.DOM.productBg,
-                productImg: this.DOM.productImg
-            });
+            setTimeout(() => {
+              DOM.details.open({
+                  productBg: this.DOM.productBg,
+                  productImg: this.DOM.productImg
+              });
+            }, 200)
         }
     };
 
