@@ -8,6 +8,7 @@
  * Copyright 2017, Codrops
  * http://www.codrops.com
  *///
+var tobi;
 {
     class Details {
         constructor() {
@@ -296,10 +297,7 @@
         document.getElementsByClassName('lightbox-image')[0].classList.remove('lightbox');
       }
       if (document.getElementsByClassName('lightbox').length) {
-        if (tobi) {
-          return tobi = new Tobi({});
-        }
-        var tobi = new Tobi({});
+        tobi = new Tobi({ draggable: false});
       }
     }
     class Item {
