@@ -100,5 +100,3 @@ var fullVideoHandler = {
   }
 };
 fullVideoHandler.init();
-
-var tobi = new Tobi({});

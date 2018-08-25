@@ -87,6 +87,48 @@
     animation-name: fade-up;
     opacity: 0;
     transform: translateY(10px); }
+  .card:nth-child(7) {
+    animation-delay: 3.5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-name: fade-up;
+    opacity: 0;
+    transform: translateY(10px); }
+  .card:nth-child(8) {
+    animation-delay: 4s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-name: fade-up;
+    opacity: 0;
+    transform: translateY(10px); }
+  .card:nth-child(9) {
+    animation-delay: 4.5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-name: fade-up;
+    opacity: 0;
+    transform: translateY(10px); }
+  .card:nth-child(10) {
+    animation-delay: 5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-name: fade-up;
+    opacity: 0;
+    transform: translateY(10px); }
+  .card:nth-child(11) {
+    animation-delay: 5.5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-name: fade-up;
+    opacity: 0;
+    transform: translateY(10px); }
+  .card:nth-child(12) {
+    animation-delay: 6s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-name: fade-up;
+    opacity: 0;
+    transform: translateY(10px); }
   @media (max-width: 750px) {
     .card {
       grid-column-end: span 2; } }
@@ -358,7 +400,8 @@
       height: auto;
       margin-bottom: 40px;
       margin-top: 40px;
-      width: 300px; }
+      max-width: 100%;
+      width: 700px; }
 
 .about-type__top {
   align-items: center;
@@ -1124,6 +1167,9 @@ main {
     display: block;
     pointer-events: none;
     opacity: 0; }
+
+.tobi-overlay button[aria-label="Close"] {
+  pointer-events: none; }
 
 h1, h2, h3, h4, h5, p {
   line-height: 1;

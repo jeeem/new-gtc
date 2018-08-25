@@ -16,9 +16,9 @@
             const detailsTmpl = `
               <div class="details__bg details__bg--up"></div>
               <div class="details__bg details__bg--down"></div>
-              <img class="details__img" src="/images/01.jpg" alt="img 01"/>
-              <h3 class="details__subtitle">{{subTitle}}</h3>
-              <h2 class="details__title">{{tour}}</h2>
+              <img class="details__img" src="" alt="img 01"/>
+              <h3 class="details__subtitle"></h3>
+              <h2 class="details__title"></h2>
               <div class="details__deco"></div>
               <div
                 class="details__assets-container">
@@ -266,6 +266,7 @@
     };
 
     function overrideTobi(tvSpots, radioSpots, printItems) {
+      console.log('override tobi is happening');
       console.log(tvSpots, radioSpots, printItems);
       tvSpots = tvSpots ? JSON.parse(tvSpots) : null;
       radioSpots = radioSpots ? JSON.parse(radioSpots) : null;
@@ -294,8 +295,11 @@
         document.getElementsByClassName('details__assets-photo')[0].style.display = 'none';
         document.getElementsByClassName('lightbox-image')[0].classList.remove('lightbox');
       }
-      if (tobi) {
-        tobi = new Tobi({});
+      if (document.getElementsByClassName('lightbox').length) {
+        if (tobi) {
+          return tobi = new Tobi({});
+        }
+        var tobi = new Tobi({});
       }
     }
     class Item {
@@ -322,7 +326,6 @@
             }
             this.DOM.product.addEventListener('click', () => {
               let dat = this.DOM.el.dataset;
-              console.log('dat', dat);
               overrideTobi(dat.tvSpots, dat.radioSpots, dat.printItems);
               this.open();
             });
