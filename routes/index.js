@@ -48,15 +48,6 @@ router.get('/*', function(req, res, next) {
   // res.render('index', templateVars);
 });
 
-// http://www.globaltourcreatives.com/api/?get=home
-
-rp(config.gtc.homeToursPage)
-  .then(data => {
-    console.log(data);
-  });
-
-
-
 
 
 module.exports = router;

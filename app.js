@@ -15,6 +15,15 @@ hbs.registerHelper('json', function(context) {
     return JSON.stringify(context);
 });
 
+hbs.registerHelper('ifIsNthItem', function(options) {
+  var index = options.data.index + 1;
+
+  if (index === 3 || index === 4 || index === 9 || index === 10)
+    return options.fn(this);
+  else
+    return options.inverse(this);
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

@@ -40,25 +40,45 @@ CARDS
 <div class="content-block content-block--nav belongs-page belongs-page--home" {{#if pagehome}}style="display:block"{{else}}style="display:none"{{/if}}>
   <div class="cards-container">
     {{#each homeCards}}
-    <div class="card">
+    <div class="
+      {{#ifIsNthItem}}
+        card card--large
+      {{else}}
+        card
+      {{/ifIsNthItem}}
+    ">
       <div class="product__bg"></div>
       <div class="card__top">
-        <img class"card__img" src="{{this.cardSrc}}" />
+        <img class"card__img" src="
+        {{#ifIsNthItem}}
+          {{this.wideCardSrc}}
+        {{else}}
+          {{this.cardSrc}}
+        {{/ifIsNthItem}}" />
       </div>
+
       <div
         class="card__bottom">
-        <h3 class="card-subtext">PURPOSE</h3>
+        <h3 class="card-subtext">
+          GC
+        </h3>
         <h2 class="card-title">{{this.tourName}}</h2>
         <div class="card-button">View Project</div>
         <div
           class="card-blur"
-          style="background-image: url({{this.cardSrc}})"></div>
+          style="background-image: url(
+            {{#ifIsNthItem}}
+              {{this.wideCardSrc}}
+            {{else}}
+              {{this.cardSrc}}
+            {{/ifIsNthItem}}
+            )"></div>
 
           <div class="card-filter"></div>
       </div>
     </div>
     {{/each}}
-    <div class="card">
+    <!-- <div class="card">
       <div class="product__bg"></div>
       <div class="card__top">
         <img class"card__img" src="/images/02.jpg" />
@@ -142,7 +162,7 @@ CARDS
 
           <div class="card-filter"></div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 <div class="content-block belongs-page belongs-page--home" {{#if pagehome}}style="display:block"{{else}}style="display:none"{{/if}}>
