@@ -40,13 +40,11 @@ CARDS
 <div class="content-block content-block--nav belongs-page belongs-page--home" {{#if pagehome}}style="display:block"{{else}}style="display:none"{{/if}}>
   <div class="cards-container">
     {{#each homeCards}}
-    <div class="
-      {{#ifIsNthItem}}
-        card card--large
-      {{else}}
-        card
-      {{/ifIsNthItem}}
-    ">
+    <div class="{{#ifIsNthItem}}card card--large{{else}}card{{/ifIsNthItem}}"
+      data-print-items="{{json this.printItems}}"
+      data-tv-spots="{{json this.tvSpots}}"
+      data-radio-spots="{{json this.radioSpots}}"
+    >
       <div class="product__bg"></div>
       <div class="card__top">
         <img class"card__img" src="
@@ -78,91 +76,6 @@ CARDS
       </div>
     </div>
     {{/each}}
-    <!-- <div class="card">
-      <div class="product__bg"></div>
-      <div class="card__top">
-        <img class"card__img" src="/images/02.jpg" />
-      </div>
-      <div
-        class="card__bottom">
-        <h3 class="card-subtext">BEAUTIFUL TRAUMA</h3>
-        <h2 class="card-title">P!NK</h2>
-        <div class="card-button">View Project</div>
-        <div
-          class="card-blur"
-          style="background-image: url(/images/02.jpg)"></div>
-
-          <div class="card-filter"></div>
-      </div>
-    </div>
-    <div class="card card--large">
-      <div class="product__bg"></div>
-      <div class="card__top">
-        <img class"card__img" src="/images/04.jpg" />
-      </div>
-      <div
-        class="card__bottom">
-        <h3 class="card-subtext">2018</h3>
-        <h2 class="card-title">STAGECOACH</h2>
-        <div class="card-button">View Project</div>
-        <div
-          class="card-blur"
-          style="background-image: url(/images/02.jpg)"></div>
-
-          <div class="card-filter"></div>
-      </div>
-    </div>
-    <div class="card card--large">
-      <div class="product__bg"></div>
-      <div class="card__top">
-        <img class"card__img" src="/images/04.jpg" />
-      </div>
-      <div
-        class="card__bottom">
-        <h3 class="card-subtext">2018</h3>
-        <h2 class="card-title">STAGECOACH</h2>
-        <div class="card-button">View Project</div>
-        <div
-          class="card-blur"
-          style="background-image: url(/images/02.jpg)"></div>
-
-          <div class="card-filter"></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="product__bg"></div>
-      <div class="card__top">
-        <img class"card__img" src="/images/01.jpg" />
-      </div>
-      <div
-        class="card__bottom">
-        <h3 class="card-subtext">PURPOSE</h3>
-        <h2 class="card-title">JUSTIN BIEBER</h2>
-        <div class="card-button">View Project</div>
-        <div
-          class="card-blur"
-          style="background-image: url(/images/01.jpg)"></div>
-
-          <div class="card-filter"></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="product__bg"></div>
-      <div class="card__top">
-        <img class"card__img" src="/images/02.jpg" />
-      </div>
-      <div
-        class="card__bottom">
-        <h3 class="card-subtext">BEAUTIFUL TRAUMA</h3>
-        <h2 class="card-title">P!NK</h2>
-        <div class="card-button">View Project</div>
-        <div
-          class="card-blur"
-          style="background-image: url(/images/02.jpg)"></div>
-
-          <div class="card-filter"></div>
-      </div>
-    </div> -->
   </div>
 </div>
 <div class="content-block belongs-page belongs-page--home" {{#if pagehome}}style="display:block"{{else}}style="display:none"{{/if}}>

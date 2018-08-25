@@ -33,17 +33,8 @@
                     <a
                       href="#lightbox-audio-1"
                       data-type="html"
-                      class="lightbox">
+                      class="lightbox lightbox-audio">
                       <i class="material-icons">mic</i><b>Generic</b>
-                    </a>
-                  </div>
-                  <div
-                    class="details__asset details__audio-asset">
-                    <a
-                      href="#lightbox-audio-2"
-                      data-type="html"
-                      class="lightbox">
-                      <i class="material-icons">mic</i><b>Amex</b>
                     </a>
                   </div>
                 </div>
@@ -57,17 +48,8 @@
                     <a
                       href="#lightbox-video-1"
                       data-type="html"
-                      class="lightbox">
+                      class="lightbox lightbox-video">
                       <i class="material-icons">play_circle_outline</i><b>Generic</b>
-                    </a>
-                  </div>
-                  <div
-                    class="details__asset details__audio-asset">
-                    <a
-                      href="#lightbox-video-2"
-                      data-type="html"
-                      class="lightbox">
-                      <i class="material-icons">play_circle_outline</i><b>Amex</b>
                     </a>
                   </div>
                 </div>
@@ -80,16 +62,8 @@
                     class="details__asset details__audio-asset">
                     <a
                       href="/images/01.jpg"
-                      class="lightbox">
+                      class="lightbox lightbox-image">
                       <i class="material-icons">create</i><b>Generic</b>
-                    </a>
-                  </div>
-                  <div
-                    class="details__asset details__audio-asset">
-                    <a
-                      href="/images/02.jpg"
-                      class="lightbox">
-                      <i class="material-icons">create</i><b>Amex</b>
                     </a>
                   </div>
                 </div>
@@ -290,10 +264,22 @@
         }
     };
 
+    function overrideTobi(tvSpots, radioSpots, printItems) {
+      console.log('tvSpots', tvSpots[0]);
+      document.getElementById('lightbox-video-1').querySelector('video').src = JSON.parse(tvSpots)[0].spotURL;
+      document.getElementById('lightbox-audio-1').querySelector('audio').src = JSON.parse(radioSpots)[0].spotURL;
+      document.getElementsByClassName('lightbox-image')[0].href = JSON.parse(printItems)[0].thumbnailURL;
+      if (tobi) {
+        return tobi = new Tobi({});
+      }
+      var tobi = new Tobi({});
+      return;
+    }
     class Item {
 		constructor(el) {
 			this.DOM = {};
             this.DOM.el = el;
+            console.log(this.DOM.el.dataset);
             this.DOM.product = this.DOM.el;
             this.DOM.productBg = this.DOM.product.querySelector('.product__bg');
 						this.DOM.top = this.DOM.product.querySelector('.card__top');
@@ -308,7 +294,12 @@
 			this.initEvents();
 		}
         initEvents() {
-            this.DOM.product.addEventListener('click', () => { console.log(this); this.open();});
+            this.DOM.product.addEventListener('click', () => {
+              let dat = this.DOM.el.dataset;
+              console.log('dat', dat);
+              overrideTobi(dat.tvSpots, dat.radioSpots, dat.printItems);
+              this.open();
+            });
         }
         open() {
             DOM.details.fill(this.info);
