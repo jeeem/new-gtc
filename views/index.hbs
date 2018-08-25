@@ -39,23 +39,25 @@ CARDS
 -->
 <div class="content-block content-block--nav belongs-page belongs-page--home" {{#if pagehome}}style="display:block"{{else}}style="display:none"{{/if}}>
   <div class="cards-container">
+    {{#each homeCards}}
     <div class="card">
       <div class="product__bg"></div>
       <div class="card__top">
-        <img class"card__img" src="/images/01.jpg" />
+        <img class"card__img" src="{{this.cardSrc}}" />
       </div>
       <div
         class="card__bottom">
         <h3 class="card-subtext">PURPOSE</h3>
-        <h2 class="card-title">JUSTIN BIEBER</h2>
+        <h2 class="card-title">{{this.tourName}}</h2>
         <div class="card-button">View Project</div>
         <div
           class="card-blur"
-          style="background-image: url(/images/01.jpg)"></div>
+          style="background-image: url({{this.cardSrc}})"></div>
 
           <div class="card-filter"></div>
       </div>
     </div>
+    {{/each}}
     <div class="card">
       <div class="product__bg"></div>
       <div class="card__top">

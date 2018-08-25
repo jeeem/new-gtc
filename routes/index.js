@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var rp = require('request-promise-native');
 /* GET home page. */
+
+var config = require('../config');
 
 router.get('/search/:string', function(req, res, next) {
   console.log('req.params.string', req.params.string);
@@ -33,7 +36,27 @@ router.get('/*', function(req, res, next) {
     }
   templateVars[`page${initialPage}`] = true;
   console.log(templateVars);
-  res.render('index', templateVars);
+  rp(config.gtc.homeToursPage)
+    .then(data => {
+      let newdata = JSON.parse(data);
+      console.log(newdata[0].cards);
+      templateVars.homeCards = newdata[0].cards;
+    })
+    .then(() => {
+      return res.render('index', templateVars);
+    })
+  // res.render('index', templateVars);
 });
+
+// http://www.globaltourcreatives.com/api/?get=home
+
+rp(config.gtc.homeToursPage)
+  .then(data => {
+    console.log(data);
+  });
+
+
+
+
 
 module.exports = router;
