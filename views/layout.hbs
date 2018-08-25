@@ -36,7 +36,7 @@
           <!-- Navigation -->
           <nav class="mdl-navigation">
             <a id="header-about" class="mdl-navigation__link" href="">ABOUT</a>
-            <a id="header-login" class="mdl-navigation__link" href="">LOGIN</a>
+            <a id="header-login" class="mdl-navigation__link" href="http://www.globaltourcreatives.com/gtcforce/log-in/" target="_blank">LOGIN</a>
             <a id="header-contact" class="mdl-navigation__link" href="">CONTACT</a>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                         mdl-textfield--floating-label mdl-textfield--align-right">
@@ -56,7 +56,7 @@
         <nav class="mdl-navigation">
           <a id="drawer-home" class="mdl-navigation__link" href="">HOME</a>
           <a id="drawer-about" class="mdl-navigation__link" href="">ABOUT</a>
-          <a id="drawer-login" class="mdl-navigation__link" href="">LOGIN</a>
+          <a id="drawer-login" class="mdl-navigation__link" href="http://www.globaltourcreatives.com/gtcforce/log-in/" target="_blank">LOGIN</a>
           <a id="drawer-contact" class="mdl-navigation__link" href="">CONTACT</a>
         </nav>
       </div>
@@ -66,18 +66,27 @@
     <div class="body-container">
       {{{body}}}
       {{#if showtour}}
-      <div id="lightbox-video-3">
-        <video controls
-          src="{{{tvSpot}}}"
-          width="620">
-          {{tvSpot}}
-          Sorry, your browser doesn't support embedded video
-        </video>
-      </div>
+        {{#each tvSpots}}
+          <div id="lightbox-video-{{this.spotTitle}}">
+            <video controls
+              src="{{{this.spotURL}}}"
+              width="620">
+              Sorry, your browser doesn't support embedded video
+            </video>
+          </div>
+        {{/each}}
+        {{#each radioSpots}}
+          <div id="lightbox-audio-{{this.spotTitle}}">
+            <audio controls
+              src="{{{this.spotURL}}}">
+              Sorry, your browser doesn't support the audio element
+            </audio>
+          </div>
+        {{/each}}
       <div class="details details--open details--open-init">
         <div class="details__bg details__bg--up"></div>
         <div class="details__bg details__bg--down"></div>
-        <img class="details__img" src="/images/01.jpg" alt="img 01"/>
+        <img class="details__img" src="{{mainImage}}" alt="img 01"/>
         <h3 class="details__subtitle">{{subTitle}}</h3>
         <h2 class="details__title">{{tour}}</h2>
         <div class="details__deco"></div>
@@ -89,70 +98,50 @@
               class="details__asset-icon details__audio-icon">
               <img src="/images/asset-audio.png" />
             </div>
+            {{#each radioSpots}}
             <div
               class="details__asset details__audio-asset">
               <a
-                href="#lightbox-audio-1"
+                href="#lightbox-audio-{{this.spotTitle}}"
                 data-type="html"
                 class="lightbox">
-                <i class="material-icons">mic</i><b>Generic</b>
+                <i class="material-icons">mic</i><b>{{this.spotTitle}}</b>
               </a>
             </div>
-            <div
-              class="details__asset details__audio-asset">
-              <a
-                href="#lightbox-audio-2"
-                data-type="html"
-                class="lightbox">
-                <i class="material-icons">mic</i><b>Amex</b>
-              </a>
-            </div>
+            {{/each}}
           </div>
           <div class="details__assets-col details__assets-video">
             <div
               class="details__asset-icon details__audio-icon">
               <img src="/images/asset-video.png" />
             </div>
-            <div
-              class="details__asset details__audio-asset">
-              <a
-                href="#lightbox-video-3"
-                data-type="html"
-                class="lightbox">
-                <i class="material-icons">play_circle_outline</i><b>Generic</b>
-              </a>
-            </div>
-            <div
-              class="details__asset details__audio-asset">
-              <a
-                href="#lightbox-video-2"
-                data-type="html"
-                class="lightbox">
-                <i class="material-icons">play_circle_outline</i><b>Amex</b>
-              </a>
-            </div>
+            {{#each tvSpots}}
+              <div
+                class="details__asset details__audio-asset">
+                <a
+                  href="#lightbox-video-{{this.spotTitle}}"
+                  data-type="html"
+                  class="lightbox lightbox-video">
+                  <i class="material-icons">play_circle_outline</i><b>{{this.spotTitle}}</b>
+                </a>
+              </div>
+            {{/each}}
           </div>
           <div class="details__assets-col details__assets-photo">
             <div
               class="details__asset-icon details__audio-icon">
               <img src="/images/asset-image.png" />
             </div>
+            {{#each printItems}}
             <div
               class="details__asset details__audio-asset">
-              <a
-                href="/images/01.jpg"
-                class="lightbox">
-                <i class="material-icons">create</i><b>Generic</b>
-              </a>
+                <a
+                  href="{{this.thumbnailURL}}"
+                  class="lightbox lightbox-print">
+                  <i class="material-icons">create</i><b>{{this.itemTitle}}</b>
+                </a>
             </div>
-            <div
-              class="details__asset details__audio-asset">
-              <a
-                href="/images/02.jpg"
-                class="lightbox">
-                <i class="material-icons">create</i><b>Amex</b>
-              </a>
-            </div>
+            {{/each}}
           </div>
         </div>
         <button class="details__close"><svg class="icon icon--cross"><use xlink:href="#icon-cross"></use></svg></button>

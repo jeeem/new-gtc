@@ -101,6 +101,6 @@ function bindNav(pageName) {
 }
 document.getElementById('header-logo').onclick = makeNavFn();
 document.getElementById('drawer-home').onclick = makeNavFn();
-['about', 'login', 'contact'].forEach(function(navItem) {
+['about', 'contact'].forEach(function(navItem) {
   bindNav(navItem);
 });

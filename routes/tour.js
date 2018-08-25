@@ -44,7 +44,10 @@ router.get('/:string', function(req, res, next) {
           subTitle: parsedName.parsed ? parsedName.subTitle : '',
           pagehome: true,
           showtour: true,
-          tvSpot: detailsBodyJSON.tvSpots[0].spotURL
+          tvSpots: detailsBodyJSON.tvSpots,
+          printItems: detailsBodyJSON.printItems,
+          radioSpots: detailsBodyJSON.radioSpots,
+          mainImage: detailsBodyJSON.printItems[0].thumbnailURL
         });
     });
   });
