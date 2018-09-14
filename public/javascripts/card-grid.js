@@ -94,6 +94,11 @@ var tobi;
         }
         initEvents() {
             this.DOM.close.addEventListener('click', () => this.close());
+            window.onpopstate = event => {
+              if (document.location.pathname === '/') {
+                this.close();
+              }
+            };
         }
         fill(info) {
             this.DOM.img.src = info.img;
@@ -329,6 +334,8 @@ var tobi;
             });
         }
         open() {
+            let cardSlug = slugify(`${this.info.title} ${this.info.subtitle}`);
+            history.pushState({}, `${this.info.subtitle} Title`, `/${cardSlug}`);
             DOM.details.fill(this.info);
             setTimeout(() => {
               DOM.details.open({
