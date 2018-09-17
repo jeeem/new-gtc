@@ -100,3 +100,28 @@ var fullVideoHandler = {
   }
 };
 fullVideoHandler.init();
+
+class MailHandler {
+  constructor() {
+    this.DOM = {};
+    this.DOM.name = document.getElementById('mailName');
+    this.DOM.email = document.getElementById('mailEmail');
+    this.DOM.body = document.getElementById('mailBody');
+    this.DOM.button = document.getElementById('mailButton');
+
+    this.DOM.name.onchange = () => this.updateData();
+    this.DOM.email.onchange = () => this.updateData();
+    this.DOM.body.onchange = () => this.updateData();4
+    this.data = {};
+  }
+  updateData() {
+    this.data.name = this.DOM.name.value;
+    this.data.email = this.DOM.email.value;
+    this.data.body = this.DOM.body.value;
+    this.updateHref();
+  }
+  updateHref() {
+    this.DOM.button.href = `mailto:russ@gtc.co?cc=${this.data.email}&subject=${this.data.name} | GTC&body=${this.data.message}`;
+  }
+}
+const mailHandler = new MailHandler();

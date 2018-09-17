@@ -14,20 +14,24 @@
       <h1 class="third">TODAY</h1>
       <div class="contact__divider"></div>
       <div class= "first-text mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" type="text">
+        <input id="mailName" class="mdl-textfield__input" type="text">
         <label class="mdl-textfield__label" for="sample1">Full Name</label>
       </div>
       <div class="second-text mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" type="text">
+        <input id="mailEmail" class="mdl-textfield__input" type="text">
         <label class="mdl-textfield__label" for="sample1">Email</label>
       </div>
       <div class="third-text mdl-textfield mdl-js-textfield">
-        <textarea class="mdl-textfield__input" type="text" rows= "3"></textarea>
+        <textarea id="mailBody" class="mdl-textfield__input" type="text" rows= "3"></textarea>
         <label class="mdl-textfield__label" for="sample5">Your Message</label>
       </div>
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+      <a
+        id="mailButton"
+        class="mdl-button mdl-button--raised mdl-button--accent"
+        href="mailto:russ@gtc.co"
+        target="_blank">
         SUBMIT
-      </button>
+      </a>
     </div>
   </div>
 </div>
@@ -88,7 +92,7 @@ CARDS
       JAY-Z / BEYONCE
     </div>
     <div class="info-container">
-      <span>ONE-MINUTE GENERIC</span>
+      <span>30-SECOND GENERIC</span>
       <h2>ON THE RUN II TOUR</h2>
     </div>
     <svg
