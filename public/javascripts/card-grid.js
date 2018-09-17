@@ -204,6 +204,7 @@ var tobi;
               this.DOM.details.classList.remove('details--open-init');
               return this.DOM.details.classList.remove('details--open');
             }
+            history.pushState({}, `home title`, `/`);
             this.isAnimating = true;
             this.DOM.img.src = '#';
 
