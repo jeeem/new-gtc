@@ -98,6 +98,14 @@ var tobi;
               if (document.location.pathname === '/') {
                 this.close();
               }
+              let newLocation = document.location.pathname.substring(1);
+              setTimeout(() => {
+                if (!newLocation) {
+                  return loadingHandler.checkDone('home');
+                } else if (newLocation === 'about' || newLocation === 'contact') {
+                  return loadingHandler.checkDone(newLocation);
+                }
+              }, 500);
             };
         }
         fill(info) {
