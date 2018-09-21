@@ -89,6 +89,7 @@ function makeNavFn(newEndpoint) {
   }
   return function(e) {
     e.preventDefault();
+    stopAllVideos();
     loadingHandler.showLoading();
     history.pushState(stateObj, `${newEndpoint || 'home'} title`, `/${newEndpoint}`);
     loadingHandler.checkDone(newEndpoint || 'home');

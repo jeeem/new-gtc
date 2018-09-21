@@ -111,7 +111,7 @@ class MailHandler {
 
     this.DOM.name.onchange = () => this.updateData();
     this.DOM.email.onchange = () => this.updateData();
-    this.DOM.body.onchange = () => this.updateData();4
+    this.DOM.body.onchange = () => this.updateData();
     this.data = {};
   }
   updateData() {

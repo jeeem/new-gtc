@@ -281,8 +281,6 @@ var tobi;
     };
 
     function overrideTobi(tvSpots, radioSpots, printItems) {
-      console.log('override tobi is happening');
-      console.log(tvSpots, radioSpots, printItems);
       tvSpots = tvSpots ? JSON.parse(tvSpots) : null;
       radioSpots = radioSpots ? JSON.parse(radioSpots) : null;
       printItems = printItems ? JSON.parse(printItems) : null;
@@ -318,7 +316,6 @@ var tobi;
 		constructor(el) {
 			this.DOM = {};
             this.DOM.el = el;
-            console.log(this.DOM.el.dataset);
             this.DOM.product = this.DOM.el;
             this.DOM.productBg = this.DOM.product.querySelector('.product__bg');
 						this.DOM.top = this.DOM.product.querySelector('.card__top');
@@ -343,6 +340,7 @@ var tobi;
             });
         }
         open() {
+            stopAllVideos();
             let cardSlug = slugify(`${this.info.title} ${this.info.subtitle}`);
             history.pushState({}, `${this.info.subtitle} Title`, `/${cardSlug}`);
             DOM.details.fill(this.info);
