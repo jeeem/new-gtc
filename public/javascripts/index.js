@@ -67,6 +67,7 @@ function changeEventHandler(event) {
 
 document.addEventListener('DOMContentLoaded',function() {
     document.getElementById('fixed-header-drawer-exp').onchange=changeEventHandler;
+    document.getElementById('fixed-header-drawer-exp').onkeydown=changeEventHandler;
 }, false);
 
 var fullVideoHandler = {
