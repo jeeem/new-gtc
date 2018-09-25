@@ -61,7 +61,7 @@ class LoadingHandler {
       AOS.init();
     }
     if (this.DOM.container.classList.contains('loading--in')) {
-      setTimeout(this.hideLoading, 1500);
+      setTimeout(this.hideLoading, 3000);
     }
   }
   checkDone(nextPage) {
