@@ -8,12 +8,22 @@ function htmlToElement(html) {
     template.innerHTML = html;
     return template.content.firstChild;
 }
+function stripHtml(html){
+    // Create a new div element
+    var temporalDivElement = document.createElement("div");
+    // Set the HTML content with the providen
+    temporalDivElement.innerHTML = html;
+    // Retrieve the text property of the element (cross-browser support)
+    return temporalDivElement.textContent || temporalDivElement.innerText || "";
+}
 function createAndAppend(arrayOfStrings) {
+
   var parentContainer = document.getElementById('search-results');
   var innerString = arrayOfStrings.join('');
+  let resultLink = stripHtml(innerString);
+  console.log('innerString', innerString, stripHtml(innerString));
   innerString = innerString.replace(/\s/g, '&nbsp;');
-  console.log('innerString', innerString);
-  var itemString = `<a class="search-results__item">${innerString}</a>`;
+  var itemString = `<a href="/tour/${resultLink}" target="_blank" class="search-results__item">${innerString}</a>`;
   var newNode = htmlToElement(itemString);
   parentContainer.appendChild(newNode);
 }

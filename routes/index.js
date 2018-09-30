@@ -68,7 +68,6 @@ router.get('/*', function(req, res, next) {
             }
             if (!thisCard.subTitle && thisCard.subTitle !== false) {
               let parsedName = utils.parseTourName(thisCard.tourName.toUpperCase());
-              console.log('PARSED NAME \n\n\n PARSED NAME\n\n\n', parsedName);
               thisCard.tourName = parsedName.parsed ? parsedName.title : thisCard.tourName.toUpperCase();
               thisCard.subTitle = parsedName.parsed ? parsedName.subTitle : false;
             }

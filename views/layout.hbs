@@ -93,6 +93,7 @@
         <div class="details__deco"></div>
         <div
           class="details__assets-container">
+          <script>console.log('RADIO SPOTS = ', {{radioSpots}}, !!{{radioSpots}});</script>
           <div
             {{#unless radioSpots}}style="display:none;"{{/unless}}
             class="details__assets-col details__assets-audio">
@@ -111,6 +112,7 @@
               </a>
             </div>
           </div>
+          <script>console.log('RADIO SPOTS = ', {{tvSpots}}, !!{{tvSpots}});</script>
           <div
             {{#unless tvSpots}}style="display:none;"{{/unless}}
             class="details__assets-col details__assets-video">

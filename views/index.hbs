@@ -265,7 +265,7 @@ ABOUT
 <div id="videoItemsContainer" style="display:none">
   <div id="lightbox-video-1">
     <video controls
-      src="http://d2rsmyw7crhe5b.cloudfront.net/TkEsOV.mp4"
+      src="{{#if tvSpots}}{{#each tvSpots}}{{this.spotURL}}{{/each}}{{/if}}"
       width="620">
       Sorry, your browser doesn't support embedded video
     </video>
@@ -282,7 +282,7 @@ ABOUT
   <div id="lightbox-audio-1">
     <audio
       controls
-      src="http://d17hws2m7av7qo.cloudfront.net/media/revisions/new/vuTg6B.mp3">
+      src="{{#if radioSpots}}{{#each radioSpots}}{{this.spotURL}}{{/each}}{{/if}}">
       Your browser does not support the <code>audio</code> element.
     </audio>
   </div>
