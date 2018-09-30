@@ -12,7 +12,8 @@ function createAndAppend(arrayOfStrings) {
   var parentContainer = document.getElementById('search-results');
   var innerString = arrayOfStrings.join('');
   innerString = innerString.replace(/\s/g, '&nbsp;');
-  var itemString = `<div class="search-results__item">${innerString}</div>`;
+  console.log('innerString', innerString);
+  var itemString = `<a class="search-results__item">${innerString}</a>`;
   var newNode = htmlToElement(itemString);
   parentContainer.appendChild(newNode);
 }

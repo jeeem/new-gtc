@@ -75,7 +75,6 @@ router.get('/*', function(req, res, next) {
           });
         });
         templateVars.homeCards = newdata[0].cards;
-        console.log('templateVars.homeCards', templateVars.homeCards);
       });
     })
     .then(() => {
