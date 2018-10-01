@@ -33,6 +33,7 @@ var tobi;
                     class="details__asset details__audio-asset">
                     <a
                       href="#lightbox-audio-1"
+                      data-href="#lightbox-audio-1"
                       data-type="html"
                       class="lightbox lightbox-audio">
                       <i class="material-icons">mic</i><b>Generic</b>
@@ -48,6 +49,7 @@ var tobi;
                     class="details__asset details__audio-asset">
                     <a
                       href="#lightbox-video-1"
+                      data-href="#lightbox-video-1"
                       data-type="html"
                       class="lightbox lightbox-video">
                       <i class="material-icons">play_circle_outline</i><b>Generic</b>

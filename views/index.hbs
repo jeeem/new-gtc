@@ -264,7 +264,10 @@ ABOUT
 </div>
 <div id="videoItemsContainer" style="display:none">
   <div id="lightbox-video-1">
-    <video controls
+    <video
+      id="tobiVideo"
+      class="tobi-video"
+      controls
       src="{{#if tvSpots}}{{#each tvSpots}}{{this.spotURL}}{{/each}}{{/if}}"
       width="620">
       Sorry, your browser doesn't support embedded video
@@ -281,6 +284,8 @@ ABOUT
 <div id="audioItemsContainer" style="display:none">
   <div id="lightbox-audio-1">
     <audio
+      id="tobiAudio"
+      class="tobi-audio"
       controls
       src="{{#if radioSpots}}{{#each radioSpots}}{{this.spotURL}}{{/each}}{{/if}}">
       Your browser does not support the <code>audio</code> element.
