@@ -1199,7 +1199,11 @@ body.body-class {
   pointer-events: auto; }
 
 .mdl-layout__drawer {
-  pointer-events: auto; }
+  pointer-events: auto;
+  position: fixed; }
+
+.mdl-layout__obfuscator.is-visible {
+  position: fixed; }
 
 video {
   cursor: pointer; }

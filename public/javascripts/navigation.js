@@ -82,6 +82,11 @@ function closeDrawer() {
   }
 }
 
+function toggleDrawer() {
+  var materializeHandlers = document.getElementsByClassName('mdl-layout')[0].MaterialLayout;
+  materializeHandlers.toggleDrawer();
+}
+
 var stateObj = {};
 function makeNavFn(newEndpoint) {
   if (!newEndpoint) {
