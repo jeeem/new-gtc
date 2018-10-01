@@ -21,6 +21,7 @@ function createAndAppend(arrayOfStrings) {
   var parentContainer = document.getElementById('search-results');
   var innerString = arrayOfStrings.join('');
   let resultLink = stripHtml(innerString);
+  resultLink = resultLink.slice(0, resultLink.length/2);
   console.log('innerString', innerString, stripHtml(innerString));
   innerString = innerString.replace(/\s/g, '&nbsp;');
   var itemString = `<a href="/tour/${resultLink}" target="_blank" class="search-results__item">${innerString}</a>`;

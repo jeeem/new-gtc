@@ -53,7 +53,7 @@ router.get('/:string', function(req, res, next) {
               tvSpots: detailsBodyJSON.tvSpots,
               printItems: detailsBodyJSON.printItems,
               radioSpots: detailsBodyJSON.radioSpots,
-              mainImage: detailsBodyJSON.printItems[0].thumbnailURL,
+              mainImage: detailsBodyJSON.printItems ? detailsBodyJSON.printItems[0].thumbnailURL : '/images/logo.png',
               homeCards: homecards
             });
         });

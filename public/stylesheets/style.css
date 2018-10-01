@@ -1176,6 +1176,12 @@ main {
 .tobi-counter {
   display: none; }
 
+#lightbox-video-1 {
+  display: none; }
+
+#lightbox-audio-1 {
+  display: none; }
+
 h1, h2, h3, h4, h5, p {
   line-height: 1;
   margin: initial;
