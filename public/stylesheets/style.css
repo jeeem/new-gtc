@@ -726,9 +726,13 @@ main {
   background: rgba(18, 18, 26, 0.5); }
 
 .details__bg--down {
+  background-color: #12121a;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: grayscale(100%) brightness(0.05);
   top: 0;
-  height: 100vh;
-  background: #12121a; }
+  height: 100vh; }
 
 .details__img {
   position: absolute;
@@ -1193,7 +1197,8 @@ body.body-class {
   font-size: 16px; }
 
 .mdl-layout__container {
-  pointer-events: none; }
+  pointer-events: none;
+  z-index: 1; }
 
 .mdl-layout__drawer-button {
   pointer-events: auto; }
@@ -1232,5 +1237,8 @@ a {
   animation-fill-mode: forwards;
   animation-name: fadeInPage;
   opacity: 0; }
+
+.tobi-loader {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */

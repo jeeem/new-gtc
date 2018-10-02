@@ -112,6 +112,8 @@ var tobi;
         }
         fill(info) {
             this.DOM.img.src = info.img;
+            let bg = document.getElementsByClassName('details__bg--down')[0];
+            bg.style.backgroundImage = `url(${info.img})`;
             this.DOM.title.innerHTML = info.title;
             this.DOM.deco.style.backgroundImage = `url(${info.img})`;
             this.DOM.subtitle.innerHTML = info.subtitle;
@@ -134,6 +136,8 @@ var tobi;
 
             this.DOM.productBg = data.productBg;
             this.DOM.productImg = data.productImg;
+            let bg = document.getElementsByClassName('details__bg--down')[0];
+            bg.style.backgroundImage = `url(${this.DOM.productImg.src})`;
 
             this.DOM.productBg.style.opacity = 0;
             this.DOM.productImg.style.opacity = 0;
