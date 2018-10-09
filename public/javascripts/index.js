@@ -22,7 +22,6 @@ function createAndAppend(arrayOfStrings) {
   var innerString = arrayOfStrings.join('');
   let resultLink = stripHtml(innerString);
   resultLink = resultLink.slice(0, resultLink.length/2);
-  console.log('innerString', innerString, stripHtml(innerString));
   innerString = innerString.replace(/\s/g, '&nbsp;');
   var itemString = `<a href="/tour/${resultLink}" target="_blank" class="search-results__item">${innerString}</a>`;
   var newNode = htmlToElement(itemString);
@@ -93,6 +92,7 @@ var fullVideoHandler = {
     this.videoPlayButton.innerHTML = this.pauseSVG;
     this.fullVideoPlaying = true;
     this.fullVideoContainer.classList.add('isPlaying');
+    document.getElementById('aboutServicesLeft').pause();
   },
   notPlaying: function() {
     this.videoPlayButton.innerHTML = this.playSVG;
@@ -113,6 +113,14 @@ var fullVideoHandler = {
   }
 };
 fullVideoHandler.init();
+
+var aboutServicesLeftVideo = document.getElementById('aboutServicesLeft');
+aboutServicesLeftVideo.onplay = () => {
+  if (fullVideoHandler.fullVideoPlaying) {
+    fullVideoHandler.notPlaying();
+    fullVideoHandler.fullVideo.pause();
+  }
+};
 
 class MailHandler {
   constructor() {
