@@ -115,7 +115,7 @@ main
   max-width: 50vw
   max-height: 100vh
   transform: all 0.2s
-  @media (max-width: 676px)
+  @media (max-width: 998px)
     max-height: initial
     max-width: initial
     min-width: 100vw
@@ -137,7 +137,7 @@ main
     font-size: 2.5em
   @media (max-width: 761px)
     font-size: 2em
-  @media (max-width: 676px)
+  @media (max-width: 998px)
     width: 100%
     text-align: center
     font-size: 2.5em
@@ -150,7 +150,7 @@ main
   letter-spacing: 0.115em
   font-size: 1.5em
   margin-top: -200px
-  @media (max-width: 676px)
+  @media (max-width: 998px)
     width: 100%
     text-align: center
 
@@ -226,7 +226,7 @@ main
     padding-bottom: 70px
     padding-left: 20px
     box-sizing: border-box
-    @media (max-width: 676px)
+    @media (max-width: 998px)
       width: 100%
       justify-content: center
 .details .details__assets-col
@@ -273,17 +273,20 @@ main
   align-content: center
   text-align: center
   justify-content: center
-  margin-right: 10px
+  margin-right: 100px
   border-radius: 10px
-  cursor: pointer
   transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1)
-  &:hover
-    transform: translate3d(-3px, -3px, 100px)
-    background: red
-    box-shadow: 0 0 30px rgba(0, 0, 0, .8)
+  position: relative
   img
     height: auto
     width: 40px
+  span
+    font-size: 21px
+    font-weight: 900
+    letter-spacing: 1.1px
+    position: absolute
+    right: -6px
+    transform: translateX(100%)
 
 @keyframes close-in
   0%
@@ -291,6 +294,16 @@ main
 
   100%
     opacity: 1
+
+.details__assets-audio
+  .details__asset-icon
+    margin-right: 80px
+.details__assets-video
+  .details__asset-icon
+    margin-right: 50px
+.details__assets-audio
+  .details__asset-photo
+    margin-right: 60px
 
 .details--open-init
   background: #12121a

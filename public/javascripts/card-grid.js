@@ -28,6 +28,7 @@ var tobi;
                   <div
                     class="details__asset-icon details__audio-icon">
                     <img src="/images/asset-audio.png" />
+                    <span>RADIO</span>
                   </div>
                   <div
                     class="details__asset details__audio-asset">
@@ -44,6 +45,7 @@ var tobi;
                   <div
                     class="details__asset-icon details__audio-icon">
                     <img src="/images/asset-video.png" />
+                    <span>TV</span>
                   </div>
                   <div
                     class="details__asset details__audio-asset">
@@ -60,6 +62,7 @@ var tobi;
                   <div
                     class="details__asset-icon details__audio-icon">
                     <img src="/images/asset-image.png" />
+                    <span>ART</span>
                   </div>
                   <div
                     class="details__asset details__audio-asset">
