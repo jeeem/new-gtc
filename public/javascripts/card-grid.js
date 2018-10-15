@@ -129,7 +129,7 @@ var tobi;
                 detailsImgRect: this.DOM.img.getBoundingClientRect()
             };
         }
-        open(data) {
+        open(data, isLarge) {
             if ( this.isAnimating ) return false;
             this.isAnimating = true;
             let gridParent = document.querySelector('.cards-container');
@@ -164,17 +164,34 @@ var tobi;
                 scaleY: 1,
                 complete: () => this.isAnimating = false
             });
-						anime({
-                targets: this.DOM.img,
-                duration: 800,
-                easing: (target, index) => index ? 'easeOutElastic' : 'easeOutSine',
-                elasticity: 250,
-                translateX: 0,
-                translateY: 0,
-                scaleX: 1,
-                scaleY: 1,
-                complete: () => this.isAnimating = false
-            });
+            if (!isLarge) {
+              anime({
+                  targets: this.DOM.img,
+                  duration: 800,
+                  easing: (target, index) => index ? 'easeOutElastic' : 'easeOutSine',
+                  elasticity: 250,
+                  translateX: 0,
+                  translateY: 0,
+                  scaleX: 1,
+                  scaleY: 1,
+                  complete: () => this.isAnimating = false
+              });
+            } else {
+              anime({
+                  targets: this.DOM.img,
+                  delay: 1000,
+                  duration: 0,
+                  easing: (target, index) => index ? 'easeOutElastic' : 'easeOutSine',
+                  elasticity: 250,
+                  translateX: 0,
+                  translateY: 0,
+                  scaleX: 1,
+                  scaleY: 1,
+                  marginLeft: 0,
+                  left: 0,
+                  complete: () => this.isAnimating = false
+              });
+            }
 
             anime({
                 targets: [this.DOM.subtitle, this.DOM.title],
@@ -343,7 +360,7 @@ var tobi;
                 title: this.DOM.product.querySelector('.card-title').innerHTML,
                 subtitle: this.DOM.product.querySelector('.card-subtext').innerHTML
             };
-
+      this.isLarge = el.classList.contains('card--large');
 			this.initEvents();
 		}
         initEvents() {
@@ -353,10 +370,10 @@ var tobi;
             this.DOM.product.addEventListener('click', () => {
               let dat = this.DOM.el.dataset;
               overrideTobi(dat.tvSpots, dat.radioSpots, dat.printItems);
-              this.open();
+              this.open(this.isLarge);
             });
         }
-        open() {
+        open(isLarge) {
             stopAllVideos();
             let cardSlug = slugify(`${this.info.title} ${this.info.subtitle}`);
             history.pushState({}, `${this.info.subtitle} Title`, `/${cardSlug}`);
@@ -365,7 +382,7 @@ var tobi;
               DOM.details.open({
                   productBg: this.DOM.productBg,
                   productImg: this.DOM.productImg
-              });
+              }, isLarge);
             }, 200)
         }
     };
