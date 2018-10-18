@@ -519,7 +519,8 @@
     transition-delay: 0.1s; }
     @media (max-width: 761px) {
       .video-wrapper .artist-name {
-        font-size: 40px; } }
+        font-size: 40px;
+        line-height: 40px; } }
   .video-wrapper .info-container {
     bottom: 25px;
     color: white;
@@ -944,12 +945,31 @@ main {
 
 .details__assets-audio .details__asset-icon {
   margin-right: 80px; }
+  @media (max-width: 530px) {
+    .details__assets-audio .details__asset-icon {
+      margin-right: initial; } }
 
 .details__assets-video .details__asset-icon {
   margin-right: 50px; }
+  @media (max-width: 530px) {
+    .details__assets-video .details__asset-icon {
+      margin-right: initial; } }
 
 .details__assets-audio .details__asset-photo {
-  margin-right: 60px; }
+  margin-right: 90px; }
+  @media (max-width: 530px) {
+    .details__assets-audio .details__asset-photo {
+      margin-right: initial; } }
+
+@media (max-width: 530px) {
+  .details__asset-icon {
+    margin-bottom: 60px;
+    margin-right: initial; }
+    .details__asset-icon span {
+      bottom: -30px;
+      left: -80px;
+      right: initial;
+      width: 100%; } }
 
 .details--open-init {
   background: #12121a; }
@@ -1275,5 +1295,8 @@ a {
 
 .tobi-loader {
   display: none; }
+
+.body--modal-open {
+  overflow: hidden; }
 
 /*# sourceMappingURL=style.css.map */

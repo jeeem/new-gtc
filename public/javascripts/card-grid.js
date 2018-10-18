@@ -131,6 +131,8 @@ var tobi;
         }
         open(data, isLarge) {
             if ( this.isAnimating ) return false;
+            document.body.classList.add('body--modal-open');
+            console.log('opening', document.body);
             this.isAnimating = true;
             let gridParent = document.querySelector('.cards-container');
             gridParent.classList.add('cards-container--open');
@@ -234,6 +236,7 @@ var tobi;
         }
         close() {
             if ( this.isAnimating ) return false;
+            document.body.classList.remove('body--modal-open');
             if (this.DOM.details.classList.contains('details--open-init')) {
               this.DOM.details.classList.remove('details--open-init');
               return this.DOM.details.classList.remove('details--open');

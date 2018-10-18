@@ -299,13 +299,28 @@ main
 .details__assets-audio
   .details__asset-icon
     margin-right: 80px
+    @media(max-width: 530px)
+      margin-right: initial
 .details__assets-video
   .details__asset-icon
     margin-right: 50px
+    @media(max-width: 530px)
+      margin-right: initial
 .details__assets-audio
   .details__asset-photo
-    margin-right: 60px
+    margin-right: 90px
+    @media(max-width: 530px)
+      margin-right: initial
 
+@media(max-width: 530px)
+  .details__asset-icon
+    margin-bottom: 60px
+    margin-right: initial
+    span
+      bottom: -30px
+      left: -80px
+      right: initial
+      width: 100%
 .details--open-init
   background: #12121a
   .details__close
