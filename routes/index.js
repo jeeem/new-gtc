@@ -8,21 +8,17 @@ var config = require('../config');
 var utils = require('../lib/utils');
 
 router.get('/search/:string', function(req, res, next) {
-  console.log('req.params.string', req.params.string);
   var searchURL = 'http://www.globaltourcreatives.com/api/?get=search&var=' + req.params.string;
-  console.log('searchURL', searchURL);
   request(searchURL, function (error, response, body) {
     console.log('error:', error); // Print the error if one occurred
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     console.log('body:', body); // Print the response.
     return res.json(body);
+    console.log('SEARCH body', body);
   });
 });
 
 router.get('/*', function(req, res, next) {
-  console.log(req.baseUrl);
-  console.log(req.path);
-
   var templateVars = {
     title: 'Express',
   };
@@ -36,7 +32,6 @@ router.get('/*', function(req, res, next) {
       initialPage = 'home';
     }
   templateVars[`page${initialPage}`] = true;
-  console.log(templateVars);
   var promiseArray = [];
   rp(config.gtc.homeToursPage)
     .then(data => {

@@ -37,7 +37,6 @@ router.get('/:string', function(req, res, next) {
           }
           // filter API info object and merge array of detail objects
           var detailsBodyJSON = utils.mergeDetails(detailsBody);
-          console.log('detailsBodyJSON', detailsBodyJSON);
           if (!detailsBodyJSON) {
             return utils.renderDefault(res);
           }

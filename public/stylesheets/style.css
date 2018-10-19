@@ -272,6 +272,8 @@
     text-decoration: none; }
     .search-results__item b {
       color: red; }
+    .search-results__item p {
+      display: none; }
 
 .nav__mobile-logo {
   display: none;

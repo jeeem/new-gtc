@@ -17,7 +17,6 @@ function stripHtml(html){
     return temporalDivElement.textContent || temporalDivElement.innerText || "";
 }
 function createAndAppend(arrayOfStrings) {
-
   var parentContainer = document.getElementById('search-results');
   var innerString = arrayOfStrings.join('');
   let resultLink = stripHtml(innerString);
@@ -25,6 +24,8 @@ function createAndAppend(arrayOfStrings) {
   innerString = innerString.replace(/\s/g, '&nbsp;');
   var itemString = `<a href="/tour/${slugify(resultLink)}" target="_blank" class="search-results__item">${innerString}</a>`;
   var newNode = htmlToElement(itemString);
+  var tourID = newNode.querySelector('p').innerHTML;
+  newNode.dataset.tour = tourID;
   parentContainer.appendChild(newNode);
 }
 function populateSearchResults(resultsArray, searchString) {
@@ -38,11 +39,11 @@ function populateSearchResults(resultsArray, searchString) {
       return !!result.tourName;
     }
   );
-  resultsArray = resultsArray.map(function(item) {
+  newResultsArray = resultsArray.map(function(item) {
     return item.tourName;
   });
   var searchResults = _SearchUtil.caseInsensitiveSearch(
-    resultsArray,
+    newResultsArray,
     searchString,
     function(matchedSubstring) {
       return `<b>${matchedSubstring}</b>`;
@@ -51,8 +52,9 @@ function populateSearchResults(resultsArray, searchString) {
       return `<span>${unmatchedSubString}</span>`;
     }
   );
-  searchResults.forEach(function(item) {
+  searchResults.forEach(function(item, thisIndex) {
     if (item.isMatch) {
+      item.transformedValue.push(`<p>${resultsArray[thisIndex].tourID}</p>`);
       return createAndAppend(item.transformedValue);
     }
   });
