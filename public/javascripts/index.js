@@ -23,7 +23,7 @@ function createAndAppend(arrayOfStrings) {
   let resultLink = stripHtml(innerString);
   resultLink = resultLink.slice(0, resultLink.length/2);
   innerString = innerString.replace(/\s/g, '&nbsp;');
-  var itemString = `<a href="/tour/${resultLink}" target="_blank" class="search-results__item">${innerString}</a>`;
+  var itemString = `<a href="/tour/${slugify(resultLink)}" target="_blank" class="search-results__item">${innerString}</a>`;
   var newNode = htmlToElement(itemString);
   parentContainer.appendChild(newNode);
 }
