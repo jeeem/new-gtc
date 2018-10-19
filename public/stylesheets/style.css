@@ -765,7 +765,7 @@ main {
       min-height: 100vh;
       height: auto;
       width: auto;
-      filter: brightness(15%) grayscale(100%) opacity(10%); } }
+      filter: brightness(15%) grayscale(100%) opacity(0%); } }
 
 .details__bg, .details__img {
   transform-origin: 0 0; }

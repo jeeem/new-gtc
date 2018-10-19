@@ -101,6 +101,7 @@ var tobi;
             this.DOM.close.addEventListener('click', () => this.close());
             window.onpopstate = event => {
               if (document.location.pathname === '/') {
+                tobi.close();
                 this.close();
               }
               let newLocation = document.location.pathname.substring(1);
