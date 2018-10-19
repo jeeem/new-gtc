@@ -1299,4 +1299,8 @@ a {
 .body--modal-open {
   overflow: hidden; }
 
+@media (max-width: 761px) {
+  .details__title {
+    font-size: 2em; } }
+
 /*# sourceMappingURL=style.css.map */
