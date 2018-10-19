@@ -167,6 +167,8 @@ var tobi;
                 complete: () => this.isAnimating = false
             });
             if (!isLarge) {
+              this.DOM.img.style.marginLeft = '';
+              this.DOM.img.style.left = '';
               anime({
                   targets: this.DOM.img,
                   duration: 800,
