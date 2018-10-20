@@ -239,6 +239,7 @@ var tobi;
         }
         close() {
             if ( this.isAnimating ) return false;
+            history.pushState({}, `GTC`, `/`);
             document.body.classList.remove('body--modal-open');
             if (this.DOM.details.classList.contains('details--open-init')) {
               this.DOM.details.classList.remove('details--open-init');
