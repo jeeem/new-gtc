@@ -52,6 +52,9 @@ function populateSearchResults(resultsArray, searchString) {
       return `<span>${unmatchedSubString}</span>`;
     }
   );
+  if (!searchResults) {
+    return;
+  }
   searchResults.forEach(function(item, thisIndex) {
     if (item.isMatch) {
       item.transformedValue.push(`<p>-${resultsArray[thisIndex].tourID}</p>`);
@@ -80,7 +83,7 @@ function changeEventHandler(event) {
 
 document.addEventListener('DOMContentLoaded',function() {
     document.getElementById('fixed-header-drawer-exp').onchange=changeEventHandler;
-    document.getElementById('fixed-header-drawer-exp').onkeydown=changeEventHandler;
+    document.getElementById('fixed-header-drawer-exp').onkeyup=changeEventHandler;
 }, false);
 
 var fullVideoHandler = {
