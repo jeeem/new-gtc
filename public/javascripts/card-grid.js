@@ -365,7 +365,8 @@ var tobi;
             this.info = {
                 img: this.DOM.productImg.src,
                 title: this.DOM.product.querySelector('.card-title').innerHTML,
-                subtitle: this.DOM.product.querySelector('.card-subtext').innerHTML
+                subtitle: this.DOM.product.querySelector('.card-subtext').innerHTML,
+                tourid: this.DOM.product.dataset.tourid
             };
       this.isLarge = el.classList.contains('card--large');
 			this.initEvents();
@@ -383,7 +384,7 @@ var tobi;
         open(isLarge) {
             stopAllVideos();
             let cardSlug = slugify(`${this.info.title} ${this.info.subtitle}`);
-            history.pushState({}, `${this.info.subtitle} Title`, `/${cardSlug}`);
+            history.pushState({}, `${this.info.subtitle} Title`, `/tour/${cardSlug}-${this.info.tourid}`);
             DOM.details.fill(this.info);
             setTimeout(() => {
               DOM.details.open({

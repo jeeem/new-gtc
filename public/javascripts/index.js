@@ -20,12 +20,12 @@ function createAndAppend(arrayOfStrings) {
   var parentContainer = document.getElementById('search-results');
   var innerString = arrayOfStrings.join('');
   let resultLink = stripHtml(innerString);
-  resultLink = resultLink.slice(0, resultLink.length/2);
+  resultLink = resultLink.slice(0, resultLink.length - 7);
   innerString = innerString.replace(/\s/g, '&nbsp;');
   var itemString = `<a href="/tour/${slugify(resultLink)}" class="search-results__item">${innerString}</a>`;
   var newNode = htmlToElement(itemString);
   var tourID = newNode.querySelector('p').innerHTML;
-  newNode.dataset.tour = tourID;
+  newNode.href = newNode.href + tourID;
   parentContainer.appendChild(newNode);
 }
 function populateSearchResults(resultsArray, searchString) {
@@ -54,7 +54,7 @@ function populateSearchResults(resultsArray, searchString) {
   );
   searchResults.forEach(function(item, thisIndex) {
     if (item.isMatch) {
-      item.transformedValue.push(`<p>${resultsArray[thisIndex].tourID}</p>`);
+      item.transformedValue.push(`<p>-${resultsArray[thisIndex].tourID}</p>`);
       return createAndAppend(item.transformedValue);
     }
   });
