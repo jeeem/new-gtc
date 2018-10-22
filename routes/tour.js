@@ -11,6 +11,14 @@ function getLastSlug(slugifiedWord){
     var n = slugifiedWord.split("-");
     return n[n.length - 1];
 }
+function IsJsonString(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
 /* GET individual tour page. */
 router.get('/:string', function(req, res, next) {
   // turn slug into words to query API
@@ -23,11 +31,11 @@ router.get('/:string', function(req, res, next) {
     .then(data => {
       homecards = data;
       // search for a tour name using URL slug
-      var searchURL = utils.createSearchURL(transformedSlug);
       var detailsURL = utils.createDetailsURL(getLastSlug(req.params.string));
       return request(detailsURL, function (detailsError, detailsResponse, detailsBody) {
-        if (detailsError) {
+        if (detailsError || !IsJsonString(detailsBody)) {
           console.log('error');
+          return res.redirect('/');
           return utils.renderDefault(res);
         }
         // filter API info object and merge array of detail objects
