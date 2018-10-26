@@ -135,19 +135,44 @@ class MailHandler {
     this.DOM.body = document.getElementById('mailBody');
     this.DOM.button = document.getElementById('mailButton');
 
-    this.DOM.name.onchange = () => this.updateData();
-    this.DOM.email.onchange = () => this.updateData();
-    this.DOM.body.onchange = () => this.updateData();
+    this.updateHref = this.updateHref.bind(this);
+    this.DOM.button.onclick = this.updateHref;
     this.data = {};
   }
   updateData() {
     this.data.name = this.DOM.name.value;
     this.data.email = this.DOM.email.value;
     this.data.body = this.DOM.body.value;
-    this.updateHref();
   }
-  updateHref() {
-    this.DOM.button.href = `mailto:russ@gtc.co?cc=${this.data.email}&subject=${this.data.name} | GTC&body=${this.data.message}`;
+  updateHref(e) {
+    e.preventDefault();
+    this.data.name = this.DOM.name.value;
+    this.data.email = this.DOM.email.value;
+    this.data.body = this.DOM.body.value;
+    window.fetch(
+      `/email/`,
+      {
+        method: 'POST',
+        mode: 'same-origin',
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        body: JSON.stringify(this.data)
+      })
+      .then(response => {
+        return response.json();
+      })
+      .then(myJson => {
+        return myJson;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+      this.DOM.name.classList.add('disabled');
+      this.DOM.email.classList.add('disabled');
+      this.DOM.body.classList.add('disabled');
+      this.DOM.button.classList.add('sent');
+      this.DOM.button.innerHTML = `THANKS, WE'll BE IN TOUCH`;
   }
 }
 const mailHandler = new MailHandler();

@@ -239,6 +239,7 @@ var tobi;
         }
         close() {
             if ( this.isAnimating ) return false;
+            loadingHandler.changePageTitle('HOME');
             history.pushState({}, `GTC`, `/`);
             document.body.classList.remove('body--modal-open');
             if (this.DOM.details.classList.contains('details--open-init')) {
@@ -384,6 +385,7 @@ var tobi;
         open(isLarge) {
             stopAllVideos();
             let cardSlug = slugify(`${this.info.title} ${this.info.subtitle}`);
+            loadingHandler.changePageTitle(`${this.info.title} ${this.info.subtitle}`);
             history.pushState({}, `${this.info.subtitle} Title`, `/tour/${cardSlug}-${this.info.tourid}`);
             DOM.details.fill(this.info);
             setTimeout(() => {

@@ -1154,6 +1154,12 @@ main {
       animation-delay: 1.9s; }
     .contact__right .third-text {
       animation-delay: 2.1s; }
+  .contact .sent {
+    background-color: white !important;
+    color: #909090 !important;
+    pointer-events: none; }
+  .contact .disabled {
+    pointer-events: none; }
 
 @keyframes lds-ring {
   0% {

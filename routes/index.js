@@ -6,6 +6,24 @@ var rp = require('request-promise-native');
 
 var config = require('../config');
 var utils = require('../lib/utils');
+router.post('/email/', function(req, res, next) {
+  request('http://www.globaltourcreatives.com/api/?post=contactForm', function (error, response, body) {
+    console.log('error:', error); // Print the error if one occurred
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    console.log('body:', body); // Print the response.
+    return res.json(body);
+  });
+});
+router.get('/id/:string', function(req, res, next) {
+  console.log('LOOKING FOR TOUR BY ID');
+  var tourURL = 'http://www.globaltourcreatives.com/api/?get=details&tourID=' + req.params.string;
+  request(tourURL, function (error, response, body) {
+    console.log('error:', error); // Print the error if one occurred
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    console.log('body:', body); // Print the response.
+    return res.json(body);
+  });
+});
 
 router.get('/search/:string', function(req, res, next) {
   var searchURL = 'http://www.globaltourcreatives.com/api/?get=search&var=' + req.params.string;
@@ -14,13 +32,12 @@ router.get('/search/:string', function(req, res, next) {
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     console.log('body:', body); // Print the response.
     return res.json(body);
-    console.log('SEARCH body', body);
   });
 });
 
 router.get('/*', function(req, res, next) {
   var templateVars = {
-    title: 'Express',
+    title: 'GTC | ',
   };
   var initialPage = 'home';
   if ( req.path.length > 1 && req.path.charAt( 0 ) === '/' ) {
@@ -31,6 +48,7 @@ router.get('/*', function(req, res, next) {
     && initialPage !== 'contact') {
       initialPage = 'home';
     }
+  templateVars.title = templateVars.title + initialPage.toUpperCase();
   templateVars[`page${initialPage}`] = true;
   var promiseArray = [];
   rp(config.gtc.homeToursPage)
