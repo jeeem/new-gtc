@@ -214,8 +214,13 @@
   <script> if (!tobi) { var tobi = new Tobi() }</script>
   {{/if}}
   <script>
+    var lazyloadThreshold = 300;
+    if (!window.matchMedia("(min-width: 751px)").matches) {
+      lazyloadThreshold = 700;
+    }
     var lazyLoadInstance = new LazyLoad({
-        elements_selector: '[data-src]'
+        elements_selector: '[data-src]',
+        threshold: lazyloadThreshold
         // ... more custom settings?
     });
   </script>
