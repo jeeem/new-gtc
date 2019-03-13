@@ -11,6 +11,7 @@ function slugify(text)
 class LoadingHandler {
   constructor() {
     this.initAOS = false;
+    this.didInit = false;
     this.DOM = {
       container: document.getElementById('loading'),
       home: Array.from(document.getElementsByClassName('belongs-page--home')),
@@ -44,7 +45,7 @@ class LoadingHandler {
         el.style.display = '';
       }
     );
-    if (pageName === 'about' && !this.initAOS) {
+    if (typeof AOS !== 'undefined' && pageName === 'about' && !this.initAOS) {
       this.initAOS = true;
       AOS.init();
     }
@@ -56,12 +57,25 @@ class LoadingHandler {
     this.DOM.container.classList.add('loading--in');
   }
   init() {
-    if (this.DOM.about[0].style.display !== 'none') {
+    if (typeof AOS !== 'undefined' && this.DOM.about[0].style.display !== 'none') {
       this.initAOS = true;
       AOS.init();
     }
     if (this.DOM.container.classList.contains('loading--in')) {
-      setTimeout(this.hideLoading, 3000);
+      if (this.didInit) {
+        setTimeout(this.hideLoading, 3000);
+      } else {
+        setTimeout(() => {
+          if (!this.didInit) {
+            console.log('timedout waiting for card images to load');
+            this.didInit = true;
+            deferAOS();
+            deferAnimate();
+            deferParallax();
+            this.hideLoading();
+          }
+        }, 10000);
+      }
     }
   }
   checkDone(nextPage) {
@@ -69,7 +83,9 @@ class LoadingHandler {
     this.hidePages();
     this.changePageTitle(nextPage);
     this.showPage(nextPage);
-    parallaxManager.restart();
+    if (typeof parallaxManager !== 'undefined') {
+      parallaxManager.restart();
+    }
     setTimeout(this.hideLoading, 800);
   }
 }

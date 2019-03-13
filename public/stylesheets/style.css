@@ -1311,4 +1311,10 @@ a {
   .details__title {
     font-size: 2em; } }
 
+.wf-materialicons-n4-loading .material-icons {
+  opacity: 0; }
+
+.wf-lato-n4-loading .mdl-navigation__link {
+  opacity: 0; }
+
 /*# sourceMappingURL=style.css.map */

@@ -1,3 +1,31 @@
+/*!
+ * Apply a CSS animation to an element
+ * (c) 2018 Chris Ferdinandi, MIT License, https://gomakethings.com
+ * @param  {Node}    elem      The element to animate
+ * @param  {String}  animation The type of animation to apply
+ * @param  {Boolean} hide      If true, apply the [hidden] attribute after the animation is done
+ */
+var animationsAvailable = false;
+var animate = function(elem, animation, hide) {
+  // If there's no element or animation, do nothing
+  if (!elem || !animation) return;
+  // Remove the [hidden] attribute
+  elem.removeAttribute('hidden');
+  // Apply the animation
+  elem.classList.add(animation);
+  // Detect when the animation ends
+  elem.addEventListener('animationend', function endAnimation (event) {
+    // Remove the animation class
+    elem.classList.remove(animation);
+    // If the element should be hidden, hide it
+    if (hide) {
+      elem.setAttribute('hidden', 'true');
+    }
+    // Remove this event listener
+    elem.removeEventListener('animationend', endAnimation, false);
+  }, false);
+};
+
 /**
  * main.js
  * http://www.codrops.com
@@ -114,7 +142,12 @@ var tobi;
               }, 500);
             };
         }
-        fill(info) {
+        fill(info, cb) {
+          this.DOM.img.onload = () => {
+            if (cb) {
+              cb();
+            }
+          };
             this.DOM.img.src = info.img;
             let bg = document.getElementsByClassName('details__bg--down')[0];
             bg.style.backgroundImage = `url(${info.img})`;
@@ -133,7 +166,6 @@ var tobi;
         open(data, isLarge) {
             if ( this.isAnimating ) return false;
             document.body.classList.add('body--modal-open');
-            console.log('opening', document.body);
             this.isAnimating = true;
             let gridParent = document.querySelector('.cards-container');
             gridParent.classList.add('cards-container--open');
@@ -248,7 +280,6 @@ var tobi;
             }
             history.pushState({}, `home title`, `/`);
             this.isAnimating = true;
-            this.DOM.img.src = '#';
 
 
             let gridParent = document.querySelector('.cards-container');
@@ -354,8 +385,10 @@ var tobi;
         tobi = new Tobi({ draggable: false});
       }
     }
+
     class Item {
 		constructor(el) {
+      this.cachedImg = null;
 			this.DOM = {};
             this.DOM.el = el;
             this.DOM.product = this.DOM.el;
@@ -363,19 +396,48 @@ var tobi;
 						this.DOM.top = this.DOM.product.querySelector('.card__top');
 						this.DOM.bottom = this.DOM.product.querySelector('.card__bottom')
             this.DOM.productImg = this.DOM.top.children[0];
+            this.DOM.subtitle = this.DOM.product.querySelector('.card-subtext');
+            this.DOM.title = this.DOM.product.querySelector('.card-title');
+            this.DOM.button = this.DOM.product.querySelector('.card-button');
             this.info = {
-                img: this.DOM.productImg.src,
-                title: this.DOM.product.querySelector('.card-title').innerHTML,
-                subtitle: this.DOM.product.querySelector('.card-subtext').innerHTML,
+                img: this.DOM.productImg.dataset.src,
+                title: this.DOM.title.innerHTML,
+                subtitle: this.DOM.subtitle.innerHTML,
                 tourid: this.DOM.product.dataset.tourid
             };
       this.isLarge = el.classList.contains('card--large');
 			this.initEvents();
+      this.cacheImage();
 		}
+    cacheImage() {
+      if (items.length > imageAmt) {
+        return;
+      }
+      var image = new Image();
+
+      var handleImageLoad = () => {
+        this.cachedImg = image;
+        cachedImgCounter++;
+        if (cachedImgCounter == imageAmt && !loadingHandler.didInit) {
+          loadingHandler.didInit = true;
+          deferAOS();
+          deferAnimate();
+          deferParallax();
+          setTimeout(loadingHandler.hideLoading, 2000);
+        }
+      }
+      image.onload = () => {
+        if (!this.cachedImg) {
+          handleImageLoad();
+        }
+      };
+      image.src = this.info.img;
+
+      if (image.complete && !this.cachedImg) {
+        handleImageLoad();
+      };
+    }
         initEvents() {
-            this.DOM.product.onmouseover = (e) => {
-              DOM.details.fill(this.info);
-            }
             this.DOM.product.addEventListener('click', () => {
               let dat = this.DOM.el.dataset;
               overrideTobi(dat.tvSpots, dat.radioSpots, dat.printItems);
@@ -387,13 +449,27 @@ var tobi;
             let cardSlug = slugify(`${this.info.title} ${this.info.subtitle}`);
             loadingHandler.changePageTitle(`${this.info.title} ${this.info.subtitle}`);
             history.pushState({}, `${this.info.subtitle} Title`, `/tour/${cardSlug}-${this.info.tourid}`);
-            DOM.details.fill(this.info);
-            setTimeout(() => {
-              DOM.details.open({
-                  productBg: this.DOM.productBg,
-                  productImg: this.DOM.productImg
-              }, isLarge);
-            }, 200)
+            var openCB = () => {
+              return setTimeout(() => {
+                DOM.details.open({
+                    productBg: this.DOM.productBg,
+                    productImg: this.DOM.productImg
+                }, isLarge);
+                if (animationsAvailable) {
+                  return setTimeout(() => {
+                    animate(this.DOM.title, 'fadeIn');
+                    animate(this.DOM.subtitle, 'fadeIn');
+                    animate(this.DOM.button, 'fadeIn');
+                  }, 1000)
+                }
+              }, 100)
+            };
+            if (animationsAvailable) {
+              animate(this.DOM.title, 'fadeOut', true);
+              animate(this.DOM.subtitle, 'fadeOut', true);
+              animate(this.DOM.button, 'fadeOut', true);
+            }
+            DOM.details.fill(this.info, openCB);
         }
     };
 
@@ -402,8 +478,9 @@ var tobi;
     DOM.content = DOM.grid.parentNode;
     DOM.gridItems = Array.from(DOM.grid.querySelectorAll('.card'));
     let items = [];
+    let cachedImgCounter = 0;
+    let imageAmt = window.matchMedia("(min-width: 751px)").matches ? 5 : 3;
     DOM.gridItems.forEach(item => items.push(new Item(item)));
-
     DOM.details = new Details();
     // imagesLoaded(document.body, () => document.body.classList.remove('loading'));
 };

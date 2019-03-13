@@ -58,6 +58,5 @@ class ParallaxManager {
     this.startWatching();
   }
 }
-
 var parallaxManager = new ParallaxManager();
 parallaxManager.init();

@@ -1,8 +1,8 @@
 <div class="content-block content-block--nav content-block--content belongs-page belongs-page--contact" {{#if pagecontact}}style="display:block"{{else}}style="display:none"{{/if}}>
   <div class="contact">
     <div class="contact__left">
-      <img class="contact__map" src="/images/map.png"/>
-      <img class="contact__bubble" src="/images/bubble.png" />
+      <img class="contact__map" data-src="/images/map.png"/>
+      <img class="contact__bubble" data-src="/images/bubble.png" />
     </div>
     <div class="contact__right">
       <h3>LET'S TALK</h3>
@@ -49,7 +49,7 @@ CARDS
     >
       <div class="product__bg"></div>
       <div class="card__top">
-        <img class"card__img" src="
+        <img class"card__img" data-src="
         {{#ifIsNthItem}}
           {{this.wideCardSrc}}
         {{else}}
@@ -59,11 +59,11 @@ CARDS
 
       <div
         class="card__bottom">
-          <h3 class="card-subtext">
+          <h3 class="card-subtext animated">
             {{#if this.subTitle}}{{this.subTitle}}{{/if}}
           </h3>
-        <h2 class="card-title">{{this.tourName}}</h2>
-        <div class="card-button">View Project</div>
+        <h2 class="card-title animated fast">{{this.tourName}}</h2>
+        <div class="card-button animated faster">View Project</div>
         <div
           class="card-blur"
           style="background-image: url(
@@ -83,7 +83,7 @@ CARDS
 <div class="content-block belongs-page belongs-page--home" {{#if pagehome}}style="display:block"{{else}}style="display:none"{{/if}}>
   <div id="fullVideoContainer" class="video-wrapper">
     <div class="video-logo">
-      <img src="/images/gtc-logo-bug.png"/>
+      <img data-src="/images/gtc-logo-bug.png"/>
       <span>VIDEO</span>
     </div>
     <div class="artist-name">
@@ -125,19 +125,19 @@ CARDS
     </div>
     <div class="about-services__right">
       <div class="about-services__medium about-services--radio">
-        <img src="/images/icons8-Microphone-100-white.png"/>
+        <img data-src="/images/icons8-Microphone-100-white.png"/>
         <span>RADIO</span>
       </div>
       <div class="about-services__medium about-services--tv">
-        <img src="/images/icons8-Monitor-100-white.png"/>
+        <img data-src="/images/icons8-Monitor-100-white.png"/>
         <span>TV</span>
       </div>
       <div class="about-services__medium about-services--experience">
-        <img src="/images/icons8-Eye-100-white.png"/>
+        <img data-src="/images/icons8-Eye-100-white.png"/>
         <span>EXPERIMENTAL</span>
       </div>
       <div class="about-services__medium about-services--digital">
-        <img src="/images/icons8-Resolution-100-white.png"/>
+        <img data-src="/images/icons8-Resolution-100-white.png"/>
         <span>DIGITAL</span>
       </div>
     </div>
@@ -175,14 +175,14 @@ ABOUT
     <div
       data-aos="fade-up"
       class="about-section--third__top about-type__top">
-      <img src="/images/gtc-logo-bug-white.png"/>
+      <img data-src="/images/gtc-logo-bug-white.png"/>
       <span class="top-text">PRINT</span>
     </div>
     <img
       data-aos="fade-left"
       data-aos-duration="1500"
       class="about-section--third__image"
-      src="/images/9edf4-shania.jpg"/>
+      data-src="/images/9edf4-shania.jpg"/>
     <div
       data-aos="fade-up"
       class="about-section--third__bottom about-type__bottom">
@@ -196,7 +196,7 @@ ABOUT
     <div
       data-aos="fade-up"
       class="about-section--fourth__top about-type__top">
-      <img src="/images/gtc-logo-bug-white.png"/>
+      <img data-src="/images/gtc-logo-bug-white.png"/>
       <span class="top-text">MOBILE</span>
     </div>
     <div
@@ -204,15 +204,15 @@ ABOUT
       <img
         data-aos="zoom-in-left"
         data-aos-duration="1500"
-        class="center-image about-section--fourth__left-image" src="/images/mobile-left.jpg"/>
+        class="center-image about-section--fourth__left-image" data-src="/images/mobile-left.jpg"/>
       <img
         data-aos="zoom-out"
         data-aos-duration="1000"
-        class="center-image about-section--fourth__center-image" src="/images/mobile-center.jpg"/>
+        class="center-image about-section--fourth__center-image" data-src="/images/mobile-center.jpg"/>
       <img
         data-aos="zoom-in-right"
         data-aos-duration="1500"
-        class="center-image about-section--fourth__right-image" src="/images/mobile-right.jpg"/>
+        class="center-image about-section--fourth__right-image" data-src="/images/mobile-right.jpg"/>
     </div>
     <div
       data-aos="zoom-out"
@@ -228,7 +228,7 @@ ABOUT
     <div
       data-aos="zoom-out"
       class="about-section--fifth__top about-type__top">
-      <img src="/images/gtc-logo-bug-white.png"/>
+      <img data-src="/images/gtc-logo-bug-white.png"/>
       <span class="top-text">DIGITAL</span>
     </div>
     <video
