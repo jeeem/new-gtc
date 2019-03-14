@@ -407,7 +407,7 @@ var tobi;
             };
       this.isLarge = el.classList.contains('card--large');
 			this.initEvents();
-      this.cacheImage();
+      // this.cacheImage();
 		}
     cacheImage() {
       if (items.length > imageAmt) {

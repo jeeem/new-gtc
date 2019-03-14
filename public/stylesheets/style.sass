@@ -67,7 +67,38 @@ a
   @media (max-width: 761px)
     font-size: 2em
 
+.material-icons
+  opacity: 0
+  transition: opacity 0.2s
 .wf-materialicons-n4-loading .material-icons
   opacity: 0
+.wf-materialicons-n4-active .material-icons,
+.wf-materialicons-n4-inactive .material-icons
+  opacity: 1
 .wf-lato-n4-loading .mdl-navigation__link
   opacity: 0
+.wf-lato-n4-active .mdl-navigation__link,
+.wf-lato-n4-inactive .mdl-navigation__link
+  opacity: 1
+
+.card__img
+  opacity: 0
+  transition: opacity 0.2s
+.card__img.loaded
+  opacity: 1
+.card__top
+  // background-image: linear-gradient( 135deg, #413e3e 10%, #253035 100%)
+.card .card__top
+  padding-top: 130%
+  position: relative
+  img
+    left: 0
+    position: absolute
+    top: 0
+.card--large .card__top
+  padding-top: 63.2%
+  position: relative
+  img
+    left: 0
+    position: absolute
+    top: 0

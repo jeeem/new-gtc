@@ -67,14 +67,13 @@ class LoadingHandler {
       } else {
         setTimeout(() => {
           if (!this.didInit) {
-            console.log('timedout waiting for card images to load');
             this.didInit = true;
             deferAOS();
             deferAnimate();
             deferParallax();
             this.hideLoading();
           }
-        }, 10000);
+        }, 4000);
       }
     }
   }

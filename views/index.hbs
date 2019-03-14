@@ -49,12 +49,9 @@ CARDS
     >
       <div class="product__bg"></div>
       <div class="card__top">
-        <img class"card__img" data-src="
-        {{#ifIsNthItem}}
-          {{this.wideCardSrc}}
-        {{else}}
-          {{this.cardSrc}}
-        {{/ifIsNthItem}}" />
+        <img
+          data-src="{{#ifIsNthItem}}{{this.wideCardSrc}}{{else}}{{this.cardSrc}}{{/ifIsNthItem}}"
+          class="card__img"/>
       </div>
 
       <div
