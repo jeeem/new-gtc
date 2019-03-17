@@ -40,41 +40,6 @@ CARDS
 -->
 <div class="content-block content-block--nav belongs-page belongs-page--home" {{#if pagehome}}style="display:block"{{else}}style="display:none"{{/if}}>
   <div class="cards-container">
-    {{#each homeCards}}
-    <div class="{{#ifIsNthItem}}card card--large{{else}}card{{/ifIsNthItem}}"
-      data-print-items="{{json this.printItems}}"
-      data-tv-spots="{{json this.tvSpots}}"
-      data-radio-spots="{{json this.radioSpots}}"
-      data-tourid="{{this.tourID}}"
-    >
-      <div class="product__bg"></div>
-      <div class="card__top">
-        <img
-          data-src="{{#ifIsNthItem}}{{this.wideCardSrc}}{{else}}{{this.cardSrc}}{{/ifIsNthItem}}"
-          class="card__img"/>
-      </div>
-
-      <div
-        class="card__bottom">
-          <h3 class="card-subtext animated">
-            {{#if this.subTitle}}{{this.subTitle}}{{/if}}
-          </h3>
-        <h2 class="card-title animated fast">{{this.tourName}}</h2>
-        <div class="card-button animated faster">View Project</div>
-        <div
-          class="card-blur"
-          style="background-image: url(
-            {{#ifIsNthItem}}
-              {{this.wideCardSrc}}
-            {{else}}
-              {{this.cardSrc}}
-            {{/ifIsNthItem}}
-            )"></div>
-
-          <div class="card-filter"></div>
-      </div>
-    </div>
-    {{/each}}
   </div>
 </div>
 <div class="content-block belongs-page belongs-page--home" {{#if pagehome}}style="display:block"{{else}}style="display:none"{{/if}}>

@@ -7,32 +7,7 @@ GTC_ROUTER.subscribe(data => {
   }
   if (data.current.page === 'tour') {
     let extractedId = _HELPERS.lastWordOfSlug(data.current.query);
-    if (GTC_STATE.hasLoadedCard(extractedId)) {
-      var cardNode = document.querySelector('[data-tourid="' + extractedId + '"]');
-      GTC_STATE.addQueuedCard(cardNode);
-    } else {
-      return window.fetch(
-        `http://www.globaltourcreatives.com/api/?get=details&tourID=${extractedId}`,
-        {
-          method: 'GET',
-          mode: 'cors'
-        })
-        .then(function(response) {
-          return response.json();
-        })
-        .then(function(myJson) {
-          console.log('fetch response');
-          console.log(myJson);
-          var cardNode = _HELPERS.htmlToElement(_HELPERS.createCardMarkup(myJson));
-          console.log(cardNode);
-          GTC_DOM.grid.append(GTC_DOM.grid.firstElementChild);
-          GTC_DOM.grid.prepend(cardNode);
-          GTC_ITEMS.push(new Item(cardNode));
-          return setTimeout(() => {
-            return cardNode.click();
-          }, 1000);
-        });
-    }
+    GTC_STATE.addSingleTour(extractedId);
   } else {
     return GTC_ROUTER.unsubscribe('land-on-tour');
   }
@@ -124,5 +99,64 @@ GTC_ROUTER.subscribe(data => {
   }
 }, 'restart-parallax');
 
-GTC_ROUTER.init()
-loadingHandler.init();
+// fetched all homepage cards, add them to dom
+GTC_STATE.subscribe(pubObj => {
+  if (pubObj.type !== GTC_STATE.PUBLISH_ACTIONS.ADD_HOME) {
+    return;
+  }
+  pubObj.data.forEach(cardJson => {
+    var cardNode = _HELPERS.htmlToElement(_HELPERS.createCardMarkup(cardJson));
+    GTC_DOM.grid.append(cardNode);
+  });
+  GTC_DOM.gridItems = Array.from(GTC_DOM.grid.querySelectorAll('.card'));
+  let GTC_ITEMS = [];
+  GTC_DOM.gridItems.forEach(item => GTC_ITEMS.push(new Item(item)));
+
+  var lazyLoadInstance = new LazyLoad({
+      elements_selector: '[data-src]',
+      threshold: 1000
+      // ... more custom settings?
+  });
+});
+
+// we're at an individual tour page
+// either select tour if its on page, or add new card to DOM
+GTC_STATE.subscribe(pubObj => {
+  if (pubObj.type !== GTC_STATE.PUBLISH_ACTIONS.ADD_SINGLE_TOUR) {
+    return;
+  }
+  const extractedId = pubObj.data;
+  if (GTC_STATE.hasLoadedCard(extractedId)) {
+    var cardNode = document.querySelector('[data-tourid="' + extractedId + '"]');
+    GTC_STATE.addQueuedCard(cardNode);
+  } else {
+    return window.fetch(
+      `http://www.globaltourcreatives.com/api/?get=details&tourID=${extractedId}`,
+      {
+        method: 'GET',
+        mode: 'cors'
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(myJson) {
+        var cardNode = _HELPERS.htmlToElement(_HELPERS.createCardMarkup(myJson));
+        GTC_DOM.grid.append(GTC_DOM.grid.firstElementChild);
+        GTC_DOM.grid.prepend(cardNode);
+        GTC_ITEMS.push(new Item(cardNode));
+        return setTimeout(() => {
+          return cardNode.click();
+        }, 1000);
+      })
+      .catch(error => {
+        console.log(`could not find tour with ID ${extractedId}`);
+        history.pushState(stateObj, `home title`, `/`);
+      });
+  }
+});
+
+_HELPERS.getHomepageCards().then(data => {
+  GTC_STATE.addHomeCards(data);
+  GTC_ROUTER.init()
+  loadingHandler.init();
+});

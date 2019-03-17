@@ -287,14 +287,5 @@
   <script defer src="/javascripts/search.js"></script>
   <script defer src="/javascripts/index.js"></script>
   <script defer src="/javascripts/init.js"></script>
-  {{#if showtour}}
-  <script> if (!tobi) { var tobi = new Tobi() }</script>
-  {{/if}}
-  <script>
-    var lazyLoadInstance = new LazyLoad({
-        elements_selector: '[data-src]',
-        threshold: 1000
-        // ... more custom settings?
-    });
   </script>
 </html>

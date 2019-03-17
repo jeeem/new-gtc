@@ -153,24 +153,37 @@ _HELPERS.transformTourResponse = function(data) {
     newData.tourName = parsedName.title;
     newData.subTitle = parsedName.subTitle;
   }
-  console.log('newData', newData);
   return newData;
 };
 
 _HELPERS.createCardMarkup = function(data) {
-  data = _HELPERS.transformTourResponse(data);
-  return `<div class="card"
-    data-print-items='${JSON.stringify(data.printItems)}'
-    data-tv-spots='${JSON.stringify(data.tvSpots)}'
-    data-radio-spots='${JSON.stringify(data.radioSpots)}'
+  if (!data.tourID) {
+    data = _HELPERS.transformTourResponse(data);
+  }
+  let wideClass = "";
+  let loadedClass = "";
+  let imageUrl = null;
+  if (data.isWide) {
+    imageUrl = data.wideCardSrc;
+    wideClass = " card--large";
+  } else if (data.cardSrc) {
+    imageUrl = data.cardSrc;
+  } else {
+    imageUrl = data.printItems[0].thumbnailURL;
+    loadedClass = " loaded";
+  }
+  return `<div class="card${wideClass}"
+    data-print-items='${data.printItems ? JSON.stringify(data.printItems) : ''}'
+    data-tv-spots='${data.tvSpots ? JSON.stringify(data.tvSpots) : ''}'
+    data-radio-spots='${data.radioSpots ? JSON.stringify(data.radioSpots) : ''}'
     data-tourid="${data.tourID}"
   >
     <div class="product__bg"></div>
     <div class="card__top">
       <img
-        src="${data.printItems[0].thumbnailURL}"
-        data-src="${data.printItems[0].thumbnailURL}"
-        class="card__img loaded"/>
+        src="${imageUrl}"
+        data-src="${imageUrl}"
+        class="card__img${loadedClass}"/>
     </div>
 
     <div
@@ -180,8 +193,82 @@ _HELPERS.createCardMarkup = function(data) {
       <div class="card-button animated faster">View Project</div>
       <div
         class="card-blur"
-        style="background-image: url(${data.printItems[0].thumbnailURL})"></div>
+        style="background-image: url(${imageUrl})"></div>
         <div class="card-filter"></div>
     </div>
   </div>`;
+};
+
+_HELPERS.getFallbackCards = function() {
+  console.log('oops! something went wrong - getting fallback cards');
+  return GTC_STATE.CARDS.FALLBACK;
+};
+
+_HELPERS.getHomepageCards = function() {
+  return window.fetch(
+    `http://www.globaltourcreatives.com/api/?get=home`,
+    {
+      method: 'GET',
+      mode: 'cors'
+    })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(newdata) {
+      let promiseArray = [];
+      newdata[0].cards.forEach(item => {
+        promiseArray.push(new Promise((resolve, reject) => {
+          return window.fetch(
+            `http://www.globaltourcreatives.com/api/?get=details&tourID=${item.tourID}`,
+            {
+              method: 'GET',
+              mode: 'cors'
+            })
+            .then(function(response) {
+              return response.json();
+            })
+            .then(function(newData) {
+              return resolve(newData);
+            })
+            .catch(function(error) {
+              return reject(error);
+            });
+        }));
+      });
+      return Promise.all(promiseArray).then(values => {
+        return values;
+      }).then(valuesArray => {
+        newdata[0].cards.forEach((item, index) => {
+          let thisCard = newdata[0].cards[index];
+          let thisSpotsArray = valuesArray[index];
+          thisSpotsArray.forEach(spotsItem => {
+            if (spotsItem.tvSpots) {
+              return thisCard.tvSpots = spotsItem.tvSpots;
+            }
+            if (spotsItem.radioSpots) {
+              return thisCard.radioSpots = spotsItem.radioSpots;
+            }
+            if (spotsItem.printItems) {
+              return thisCard.printItems = spotsItem.printItems;
+            }
+            if (!thisCard.subTitle && thisCard.subTitle !== false) {
+              let parsedName = _HELPERS.parseTourName(thisCard.tourName.toUpperCase());
+              thisCard.tourName = parsedName.parsed ? parsedName.title : thisCard.tourName.toUpperCase();
+              thisCard.subTitle = parsedName.parsed ? parsedName.subTitle : false;
+            }
+          });
+          if (
+            index === 2
+            || index === 3
+            || index === 8
+            || index === 9
+          ) {
+            thisCard.isWide = true;
+          }
+        });
+        return newdata[0].cards;
+      });
+    }).catch(error => {
+      return _HELPERS.getFallbackCards();
+    });
 };
