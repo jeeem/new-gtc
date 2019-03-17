@@ -50,16 +50,16 @@ function changeEventHandler(event) {
     return populateSearchResults(null);
   }
   return window.fetch(
-    `/search/${event.target.value}`,
+    `http://www.globaltourcreatives.com/api/?get=search&var=${event.target.value}`,
     {
       method: 'GET',
-      mode: 'same-origin'
+      mode: 'cors'
     })
     .then(function(response) {
       return response.json();
     })
     .then(function(myJson) {
-      populateSearchResults(myJson, event.target.value);
+      populateSearchResults(JSON.stringify(myJson), event.target.value);
     });
 }
 
