@@ -104,6 +104,9 @@ GTC_STATE.subscribe(pubObj => {
   if (pubObj.type !== GTC_STATE.PUBLISH_ACTIONS.ADD_HOME) {
     return;
   }
+  if (!_HELPERS.storeWithExpiration.get('HOME_CARDS')) {
+    _HELPERS.storeWithExpiration.set('HOME_CARDS', pubObj.data, _HELPERS.DAY_IN_MS);
+  }
   pubObj.data.forEach(cardJson => {
     var cardNode = _HELPERS.htmlToElement(_HELPERS.createCardMarkup(cardJson));
     GTC_DOM.grid.append(cardNode);

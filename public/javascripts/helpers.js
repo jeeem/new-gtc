@@ -17,6 +17,19 @@ _HELPERS.stopAllAudio = function() {
   });
 };
 
+_HELPERS.DAY_IN_MS = 1000 * 60 * 60 * 24;
+
+_HELPERS.storeWithExpiration = {
+	set: function(key, val, exp) {
+		store.set(key, { val:val, exp:exp, time:new Date().getTime() })
+	},
+	get: function(key) {
+		var info = store.get(key)
+		if (!info) { return null }
+		if (new Date().getTime() - info.time > info.exp) { return null }
+		return info.val
+	}
+};
 /*!
  * Apply a CSS animation to an element
  * (c) 2018 Chris Ferdinandi, MIT License, https://gomakethings.com
@@ -205,6 +218,11 @@ _HELPERS.getFallbackCards = function() {
 };
 
 _HELPERS.getHomepageCards = function() {
+  const CACHED_CARDS = _HELPERS.storeWithExpiration.get('HOME_CARDS');
+  if (CACHED_CARDS) {
+    console.log('retrieved cards from cache');
+    return Promise.resolve(CACHED_CARDS);
+  }
   return window.fetch(
     `http://www.globaltourcreatives.com/api/?get=home`,
     {
