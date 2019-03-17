@@ -40,7 +40,7 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/tour', tourRouter);
+// app.use('/tour', tourRouter);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler

@@ -49,7 +49,7 @@ router.get('/*', function(req, res, next) {
       initialPage = 'home';
     }
   templateVars.title = templateVars.title + initialPage.toUpperCase();
-  templateVars[`page${initialPage}`] = true;
+  // templateVars[`page${initialPage}`] = true;
   var promiseArray = [];
   rp(config.gtc.homeToursPage)
     .then(data => {

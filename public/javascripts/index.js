@@ -1,29 +1,11 @@
-/**
- * @param {String} HTML representing a single element
- * @return {Element}
- */
-function htmlToElement(html) {
-    var template = document.createElement('template');
-    html = html.trim(); // Never return a text node of whitespace as the result
-    template.innerHTML = html;
-    return template.content.firstChild;
-}
-function stripHtml(html){
-    // Create a new div element
-    var temporalDivElement = document.createElement("div");
-    // Set the HTML content with the providen
-    temporalDivElement.innerHTML = html;
-    // Retrieve the text property of the element (cross-browser support)
-    return temporalDivElement.textContent || temporalDivElement.innerText || "";
-}
 function createAndAppend(arrayOfStrings) {
   var parentContainer = document.getElementById('search-results');
   var innerString = arrayOfStrings.join('');
-  let resultLink = stripHtml(innerString);
+  let resultLink = _HELPERS.stripHtml(innerString);
   resultLink = resultLink.slice(0, resultLink.length - 7);
   innerString = innerString.replace(/\s/g, '&nbsp;');
-  var itemString = `<a href="/tour/${slugify(resultLink)}" class="search-results__item">${innerString}</a>`;
-  var newNode = htmlToElement(itemString);
+  var itemString = `<a href="/tour/${_HELPERS.slugify(resultLink)}" class="search-results__item">${innerString}</a>`;
+  var newNode = _HELPERS.htmlToElement(itemString);
   var tourID = newNode.querySelector('p').innerHTML;
   newNode.href = newNode.href + tourID;
   parentContainer.appendChild(newNode);

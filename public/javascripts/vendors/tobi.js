@@ -1,20 +1,3 @@
-function stopAllVideos() {
-  let vidyas = document.querySelectorAll('video');
-  Array.from(vidyas).forEach(vidya => {
-    vidya.pause();
-    vidya.currentTime = 0;
-  });
-}
-
-function stopAllAudio() {
-  let audyas = document.querySelectorAll('audio');
-  Array.from(audyas).forEach(audya => {
-    audya.pause();
-    audya.currentTime = 0;
-  });
-}
-
-
 /**
  * Tobi
  *
@@ -531,8 +514,8 @@ function stopAllAudio() {
         document.documentElement.classList.remove('tobi--is-open')
         document.body.classList.remove('tobi--is-open')
       }
-      stopAllVideos();
-      stopAllAudio();
+      _HELPERS.stopAllVideos();
+      _HELPERS.stopAllAudio();
       // Unbind events
       unbindEvents()
 
@@ -583,8 +566,8 @@ function stopAllAudio() {
       for (var index = 0; index < elementsLength; index++) {
         var container = sliderElements[index].querySelector('figure')
         var type = container.getAttribute('data-type')
-        stopAllVideos();
-        stopAllAudio();
+        _HELPERS.stopAllVideos();
+        _HELPERS.stopAllAudio();
         if (supportedElements[type]) {
             supportedElements[type].onLeave(container);
         }
@@ -708,8 +691,8 @@ function stopAllAudio() {
       if (currentIndex !== elementsLength - 1) {
         leave()
       }
-      stopAllVideos();
-      stopAllAudio();
+      _HELPERS.stopAllVideos();
+      _HELPERS.stopAllAudio();
       if (currentIndex < elementsLength - 1) {
         currentIndex++
 
@@ -731,8 +714,8 @@ function stopAllAudio() {
       if (currentIndex > 0) {
         leave()
       }
-      stopAllVideos();
-      stopAllAudio();
+      _HELPERS.stopAllVideos();
+      _HELPERS.stopAllAudio();
       if (currentIndex > 0) {
         currentIndex--
 

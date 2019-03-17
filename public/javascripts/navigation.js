@@ -1,25 +1,28 @@
-function slugify(text)
-{
-  return text.toString().toLowerCase()
-    .replace(/\s+/g, '-')           // Replace spaces with -
-    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-    .replace(/^-+/, '')             // Trim - from start of text
-    .replace(/-+$/, '');            // Trim - from end of text
-}
-
 class LoadingHandler {
   constructor() {
     this.initAOS = false;
     this.didInit = false;
     this.DOM = {
       container: document.getElementById('loading'),
-      home: Array.from(document.getElementsByClassName('belongs-page--home')),
-      about: Array.from(document.getElementsByClassName('belongs-page--about')),
-      contact: Array.from(document.getElementsByClassName('belongs-page--contact')),
-    }
+      allSections: Array.from(document.getElementsByClassName('belongs-page')),
+      home: [],
+      about: [],
+      contact: [],
+    };
+    this.getPageSections();
     this.hideLoading = this.hideLoading.bind(this);
-    this.init();
+  }
+  getPageSections() {
+    const pagesArray = ['home', 'about', 'contact'];
+    this.DOM.allSections.forEach(thisSection => {
+      for (var i = 0; i < pagesArray.length; i++) {
+        const thisPage = pagesArray[i];
+        if (thisSection.classList.contains(`belongs-page--${thisPage}`)) {
+          this.DOM[thisPage].push(thisSection);
+          break;
+        }
+      }
+    });
   }
   changePageTitle(pageName) {
     if (!pageName) {
@@ -29,7 +32,7 @@ class LoadingHandler {
     return document.title = newTitle;
   }
   hidePages() {
-    Array.from(document.getElementsByClassName('belongs-page')).forEach(
+    this.DOM.allSections.forEach(
       function(el) {
         el.style.display = 'none';
       }
@@ -45,10 +48,6 @@ class LoadingHandler {
         el.style.display = '';
       }
     );
-    if (typeof AOS !== 'undefined' && pageName === 'about' && !this.initAOS) {
-      this.initAOS = true;
-      AOS.init();
-    }
   }
   hideLoading() {
     this.DOM.container.classList.remove('loading--in');
@@ -57,50 +56,17 @@ class LoadingHandler {
     this.DOM.container.classList.add('loading--in');
   }
   init() {
-    if (typeof AOS !== 'undefined' && this.DOM.about[0].style.display !== 'none') {
-      this.initAOS = true;
-      AOS.init();
-    }
-    if (this.DOM.container.classList.contains('loading--in')) {
-      if (this.didInit) {
-        setTimeout(this.hideLoading, 3000);
-      } else {
-        setTimeout(() => {
-          if (!this.didInit) {
-            this.didInit = true;
-            deferAOS();
-            deferAnimate();
-            deferParallax();
-            this.hideLoading();
-          }
-        }, 4000);
-      }
-    }
-  }
-  checkDone(nextPage) {
-    // check if we even ready to remove loading icon here
-    this.hidePages();
-    this.changePageTitle(nextPage);
-    this.showPage(nextPage);
-    if (typeof parallaxManager !== 'undefined') {
-      parallaxManager.restart();
-    }
-    setTimeout(this.hideLoading, 800);
+    setTimeout(() => {
+      this.didInit = true;
+      deferAOS();
+      deferAnimate();
+      deferParallax();
+      this.hideLoading();
+      setTimeout(() => GTC_STATE.selectQueuedCard(), 500);
+    }, 4000);
   }
 }
 var loadingHandler = new LoadingHandler();
-
-function closeDrawer() {
-  var materializeHandlers = document.getElementsByClassName('mdl-layout')[0].MaterialLayout;
-  if (materializeHandlers.drawer_.classList.contains('is-visible')) {
-    materializeHandlers.toggleDrawer();
-  }
-}
-
-function toggleDrawer() {
-  var materializeHandlers = document.getElementsByClassName('mdl-layout')[0].MaterialLayout;
-  materializeHandlers.toggleDrawer();
-}
 
 var stateObj = {};
 function makeNavFn(newEndpoint) {
@@ -109,11 +75,8 @@ function makeNavFn(newEndpoint) {
   }
   return function(e) {
     e.preventDefault();
-    stopAllVideos();
-    loadingHandler.showLoading();
     history.pushState(stateObj, `${newEndpoint || 'home'} title`, `/${newEndpoint}`);
-    loadingHandler.checkDone(newEndpoint || 'home');
-    closeDrawer();
+    GTC_ROUTER.navigate();
   }
 }
 function bindNav(pageName) {

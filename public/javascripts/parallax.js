@@ -1,8 +1,3 @@
-//Where el is the DOM element you'd like to test for visibility
-function isHidden(el) {
-    return (el.offsetParent === null)
-}
-
 function makeParallaxFn(domNode) {
   return function() {
   	var yPos = domNode.getBoundingClientRect().top / 9;
@@ -23,7 +18,7 @@ class ParallaxManager {
     this.throttled = _.throttle(this.executeAll, 32);
   }
   createOne(element, index) {
-    if (!isHidden(element)) {
+    if (!_HELPERS.isHidden(element)) {
       this.fnRefs.push(makeParallaxFn(element));
     }
     // this.fnRefs[index] = makeParallaxFn(element);
