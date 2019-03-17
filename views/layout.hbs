@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{title}}</title>
+    <title>GTC | GLOBAL TOUR CREATIVES</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     /* http://meyerweb.com/eric/tools/css/reset/
@@ -150,96 +150,268 @@
       </main>
     </div>
     <div class="body-container">
-      {{{body}}}
-      {{#if showtour}}
-        {{#each tvSpots}}
-          <div id="lightbox-video-1">
-            <video controls
-              src="{{{this.spotURL}}}"
+      <div class="content-block content-block--nav content-block--content belongs-page belongs-page--contact" style="display:none">
+        <div class="contact">
+          <div class="contact__left">
+            <img class="contact__map" data-src="/images/map.png"/>
+            <img class="contact__bubble" data-src="/images/bubble.png" />
+          </div>
+          <div class="contact__right">
+            <h3>LET'S TALK</h3>
+            <h1 class="first">CONNECT</h1>
+            <h1 class="second">WITH US</h1>
+            <h1 class="third">TODAY</h1>
+            <div class="contact__divider"></div>
+            <div class= "first-text mdl-textfield mdl-js-textfield">
+              <input id="mailName" class="mdl-textfield__input" type="text">
+              <label class="mdl-textfield__label" for="sample1">Full Name</label>
+            </div>
+            <div class="second-text mdl-textfield mdl-js-textfield">
+              <input id="mailEmail" class="mdl-textfield__input" type="text">
+              <label class="mdl-textfield__label" for="sample1">Email</label>
+            </div>
+            <div class="third-text mdl-textfield mdl-js-textfield">
+              <textarea id="mailBody" class="mdl-textfield__input" type="text" rows= "3"></textarea>
+              <label class="mdl-textfield__label" for="sample5">Your Message</label>
+            </div>
+            <a
+              id="mailButton"
+              class="mdl-button mdl-button--raised mdl-button--accent"
+              href="mailto:russ@gtc.co"
+              target="_blank">
+              SUBMIT
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!--
+
+      CARDS
+
+      -->
+      <div class="content-block content-block--nav belongs-page belongs-page--home" style="display:none">
+        <div class="cards-container">
+        </div>
+      </div>
+      <div class="content-block belongs-page belongs-page--home" style="display:none">
+        <div id="fullVideoContainer" class="video-wrapper">
+          <div class="video-logo">
+            <img data-src="/images/gtc-logo-bug.png"/>
+            <span>VIDEO</span>
+          </div>
+          <div class="artist-name">
+            JAY-Z / BEYONCE
+          </div>
+          <div class="info-container">
+            <span>30-SECOND GENERIC</span>
+            <h2>ON THE RUN II TOUR</h2>
+          </div>
+          <svg
+            id="fullVideoPlay"
+            class="video-overlay-play-button"
+            fill="currentColor"
+            viewBox="0 0 24 24">
+            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 18v-12l10 6-10 6z"/>
+          </svg>
+          <video
+            id="fullVideo"
+            src="http://d2rsmyw7crhe5b.cloudfront.net/tVKcwq.mp4"
+            poster="/images/poster-1.png"></video>
+          <div
+            id="fullVideoPoster"
+            style="background-image: url('http://www.globaltourcreatives.com/media/asset_lib/download.php?token=529e365916edd04b5f098b6b3c5f7c95&seed=8d9c6e754cda95f1dc7c6475cd6d84d0')"
+            class="full-video-poster parallax">
+            <div class="darken-poster"></div>
+          </div>
+        </div>
+      </div>
+      <div class="content-block belongs-page belongs-page--home" style="display:none">
+        <div class="about-services">
+          <div class="about-services__left">
+            <video id="aboutServicesLeft"
+              controls
+              src="http://d2rsmyw7crhe5b.cloudfront.net/huEZ2k.mp4"
               width="620">
-              Sorry, your browser doesn't support embedded video
+              Sorry, your browser doesn't support embedded videos
+
             </video>
           </div>
-        {{/each}}
-        {{#each radioSpots}}
-          <div id="lightbox-audio-1">
-            <audio controls
-              src="{{{this.spotURL}}}">
-              Sorry, your browser doesn't support the audio element
-            </audio>
-          </div>
-        {{/each}}
-      <div class="details details--open details--open-init">
-        <div class="details__bg details__bg--up"></div>
-        <div class="details__bg details__bg--down"></div>
-        <img class="details__img" src="{{mainImage}}" alt="img 01"/>
-        <h3 class="details__subtitle">{{subTitle}}</h3>
-        <h2 class="details__title">{{tour}}</h2>
-        <div class="details__deco"></div>
-        <div
-          class="details__assets-container">
-          <div
-            {{#unless radioSpots}}style="display:none;"{{/unless}}
-            class="details__assets-col details__assets-audio">
-            <div
-              class="details__asset-icon details__audio-icon">
-              <img src="/images/asset-audio.png" />
+          <div class="about-services__right">
+            <div class="about-services__medium about-services--radio">
+              <img data-src="/images/icons8-Microphone-100-white.png"/>
               <span>RADIO</span>
             </div>
-            <div
-              class="details__asset details__audio-asset">
-              <a
-                data-lightboxindex="0"
-                href="#lightbox-audio-1"
-                data-href="#lightbox-audio-1"
-                data-type="html"
-                class="lightbox lightbox-audio">
-                <i class="material-icons">mic</i><b>Generic</b>
-              </a>
-            </div>
-          </div>
-          <div
-            {{#unless tvSpots}}style="display:none;"{{/unless}}
-            class="details__assets-col details__assets-video">
-            <div
-              class="details__asset-icon details__audio-icon">
-              <img src="/images/asset-video.png" />
+            <div class="about-services__medium about-services--tv">
+              <img data-src="/images/icons8-Monitor-100-white.png"/>
               <span>TV</span>
             </div>
-            <div
-              class="details__asset details__audio-asset">
-              <a
-                data-lightboxindex="1"
-                href="#lightbox-video-1"
-                data-href="#lightbox-video-1"
-                data-type="html"
-                class="lightbox lightbox-video">
-                <i class="material-icons">play_circle_outline</i><b>Generic</b>
-              </a>
+            <div class="about-services__medium about-services--experience">
+              <img data-src="/images/icons8-Eye-100-white.png"/>
+              <span>EXPERIMENTAL</span>
             </div>
-          </div>
-          <div
-            {{#unless printItems}}style="display:none;"{{/unless}}
-            class="details__assets-col details__assets-photo">
-            <div
-              class="details__asset-icon details__audio-icon">
-              <img src="/images/asset-image.png" />
-              <span>ART</span>
-            </div>
-            <div
-              class="details__asset details__audio-asset">
-                <a
-                  data-lightboxindex="2"
-                  href="{{#if printItems}}{{#each printItems}}{{this.thumbnailURL}}{{/each}}{{/if}}"
-                  class="lightbox lightbox-print lightbox-image">
-                  <i class="material-icons">create</i><b>Generic</b>
-                </a>
+            <div class="about-services__medium about-services--digital">
+              <img data-src="/images/icons8-Resolution-100-white.png"/>
+              <span>DIGITAL</span>
             </div>
           </div>
         </div>
-        <button class="details__close"><svg class="icon icon--cross"><use xlink:href="#icon-cross"></use></svg></button>
       </div>
-      {{/if}}
+      <!--
+
+      ABOUT
+
+      -->
+      <div class="content-block belongs-page belongs-page--about" style="display:none">
+        <div
+          class="about-section about-section--first parallax">
+          <h1>DIGITAL<br/>MARKETING</h1>
+          <h3>UNLIKE ANYTHING YOU COULD IMAGINE</h3>
+          <span>SCROLL DOWN</span>
+        </div>
+      </div>
+      <svg class="hidden">
+        <symbol id="icon-cross" viewBox="0 0 24 24">
+          <title>cross</title>
+          <path d="M 5.5,2.5 C 5.372,2.5 5.244,2.549 5.146,2.646 L 2.646,5.146 C 2.451,5.341 2.451,5.659 2.646,5.854 L 8.793,12 2.646,18.15 C 2.451,18.34 2.451,18.66 2.646,18.85 L 5.146,21.35 C 5.341,21.55 5.659,21.55 5.854,21.35 L 12,15.21 18.15,21.35 C 18.24,21.45 18.37,21.5 18.5,21.5 18.63,21.5 18.76,21.45 18.85,21.35 L 21.35,18.85 C 21.55,18.66 21.55,18.34 21.35,18.15 L 15.21,12 21.35,5.854 C 21.55,5.658 21.55,5.342 21.35,5.146 L 18.85,2.646 C 18.66,2.451 18.34,2.451 18.15,2.646 L 12,8.793 5.854,2.646 C 5.756,2.549 5.628,2.5 5.5,2.5 Z"/>
+        </symbol>
+      </svg>
+      <div class="content-block belongs-page belongs-page--about" style="display:none">
+        <div
+          class="about-section about-section--second">
+          <h1
+            data-aos="fade-up">WE CONNECT YOU TO YOUR <span>GLOBAL</span> FANS</h1>
+        </div>
+      </div>
+      <div class="content-block belongs-page belongs-page--about" style="display:none">
+        <div
+          class="about-section about-type about-section--third">
+          <div
+            data-aos="fade-up"
+            class="about-section--third__top about-type__top">
+            <img data-src="/images/gtc-logo-bug-white.png"/>
+            <span class="top-text">PRINT</span>
+          </div>
+          <img
+            data-aos="fade-left"
+            data-aos-duration="1500"
+            class="about-section--third__image"
+            data-src="/images/9edf4-shania.jpg"/>
+          <div
+            data-aos="fade-up"
+            class="about-section--third__bottom about-type__bottom">
+            <span>INSTAGRAM | FACEBOOK | SNAPCHAT | TWITTER</span>
+            <p>Connect with your fans outdoors and on the go. Take control of your messaging.</p>
+          </div>
+        </div>
+      </div>
+      <div class="content-block belongs-page belongs-page--about" style="display:none">
+        <div class="about-section about-type about-section--fourth">
+          <div
+            data-aos="fade-up"
+            class="about-section--fourth__top about-type__top">
+            <img data-src="/images/gtc-logo-bug-white.png"/>
+            <span class="top-text">MOBILE</span>
+          </div>
+          <div
+            class="about-section--fourth__center">
+            <img
+              data-aos="zoom-in-left"
+              data-aos-duration="1500"
+              class="center-image about-section--fourth__left-image" data-src="/images/mobile-left.jpg"/>
+            <img
+              data-aos="zoom-out"
+              data-aos-duration="1000"
+              class="center-image about-section--fourth__center-image" data-src="/images/mobile-center.jpg"/>
+            <img
+              data-aos="zoom-in-right"
+              data-aos-duration="1500"
+              class="center-image about-section--fourth__right-image" data-src="/images/mobile-right.jpg"/>
+          </div>
+          <div
+            data-aos="zoom-out"
+            class="about-section--fourth__bottom about-type__bottom">
+            <span>INSTAGRAM | FACEBOOK | SNAPCHAT | TWITTER</span>
+            <p>Creating the perfect content to build your fanbase and keep people informed.</p>
+          </div>
+        </div>
+      </div>
+      <div class="content-block belongs-page belongs-page--about" style="display:none">
+        <div
+          class="about-section about-type about-section--fifth parallax">
+          <div
+            data-aos="zoom-out"
+            class="about-section--fifth__top about-type__top">
+            <img data-src="/images/gtc-logo-bug-white.png"/>
+            <span class="top-text">DIGITAL</span>
+          </div>
+          <video
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            class="about-section--fifth__video"
+            controls
+            src="http://d2rsmyw7crhe5b.cloudfront.net/71InTw.mp4"
+            width="620">
+            Sorry, your browser doesn't support embedded videos,
+          </video>
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            class="about-section--fifth__bottom about-type__bottom">
+            <span>DIGITAL VIDEO PRODUCTION</span>
+            <p>Creating the perfect content to build your fanbase and keep people informed.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="footer__top">
+          <span>Copyright © 2018 Global Tour Creatives. All rights reserved.</span>
+        </div>
+        <div style="display:none" class="footer__bottom">
+          <span>Privacy</span>
+          <b>/</b>
+          <span>Terms Of Use</span>
+          <b>/</b>
+          <span>Cookies</span>
+        </div>
+      </div>
+      <div id="videoItemsContainer" style="display:none">
+        <div id="lightbox-video-1">
+          <video
+            id="tobiVideo"
+            class="tobi-video"
+            controls
+            src=""
+            width="620">
+            Sorry, your browser doesn't support embedded video
+          </video>
+        </div>
+        <div id="lightbox-video-2">
+          <video controls
+            src="http://d2rsmyw7crhe5b.cloudfront.net/71InTw.mp4"
+            width="620">
+            Sorry, your browser doesn't support embedded video
+          </video>
+        </div>
+      </div>
+      <div id="audioItemsContainer" style="display:none">
+        <div id="lightbox-audio-1">
+          <audio
+            id="tobiAudio"
+            class="tobi-audio"
+            controls
+            src="">
+            Your browser does not support the <code>audio</code> element.
+          </audio>
+        </div>
+        <div id="lightbox-audio-2">
+          <audio
+            controls
+            src="http://d17hws2m7av7qo.cloudfront.net/media/revisions/new/aLMPGA.mp3">
+            Your browser does not support the <code>audio</code> element.
+          </audio>
+        </div>
+      </div>
     </div>
   </body>
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
