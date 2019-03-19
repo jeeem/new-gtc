@@ -34,7 +34,7 @@ _HELPERS.storeWithExpiration = {
 _HELPERS.isInViewport = function (elem) {
 	var distance = elem.getBoundingClientRect();
 	return (
-		distance.top <= ((window.innerHeight || document.documentElement.clientHeight) + 500)
+		distance.top <= ((window.innerHeight || document.documentElement.clientHeight) + 1500)
 	);
 };
 
