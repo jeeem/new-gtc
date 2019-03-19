@@ -153,8 +153,8 @@
       <div class="content-block content-block--nav content-block--content belongs-page belongs-page--contact" style="display:none">
         <div class="contact">
           <div class="contact__left">
-            <img class="contact__map" data-src="/images/map.png"/>
-            <img class="contact__bubble" data-src="/images/bubble.png" />
+            <img class="contact__map gtc-lazyload" data-page="contact" data-src="/images/map.png"/>
+            <img class="contact__bubble gtc-lazyload" data-page="contact" data-src="/images/bubble.png" />
           </div>
           <div class="contact__right">
             <h3>LET'S TALK</h3>
@@ -197,7 +197,7 @@
       <div class="content-block belongs-page belongs-page--home" style="display:none">
         <div id="fullVideoContainer" class="video-wrapper">
           <div class="video-logo">
-            <img data-src="/images/gtc-logo-bug.png"/>
+            <img data-page="home" class="gtc-lazyload" data-src="/images/gtc-logo-bug.png"/>
             <span>VIDEO</span>
           </div>
           <div class="artist-name">
@@ -216,14 +216,19 @@
           </svg>
           <video
             id="fullVideo"
-            src="http://d2rsmyw7crhe5b.cloudfront.net/tVKcwq.mp4"
-            poster="/images/poster-1.png"></video>
+            class="gtc-lazyload"
+            data-poster="/images/poster-1.png"
+            data-page="home"
+            src="http://d2rsmyw7crhe5b.cloudfront.net/tVKcwq.mp4"></video>
+          <!-- poster="/images/poster-1.png" -->
           <div
             id="fullVideoPoster"
-            style="background-image: url('http://www.globaltourcreatives.com/media/asset_lib/download.php?token=529e365916edd04b5f098b6b3c5f7c95&seed=8d9c6e754cda95f1dc7c6475cd6d84d0')"
-            class="full-video-poster parallax">
+            data-bg="http://www.globaltourcreatives.com/media/asset_lib/download.php?token=529e365916edd04b5f098b6b3c5f7c95&seed=8d9c6e754cda95f1dc7c6475cd6d84d0"
+            data-page="home"
+            class="full-video-poster parallax gtc-lazyload">
             <div class="darken-poster"></div>
           </div>
+          <!-- style="background-image: url('http://www.globaltourcreatives.com/media/asset_lib/download.php?token=529e365916edd04b5f098b6b3c5f7c95&seed=8d9c6e754cda95f1dc7c6475cd6d84d0')" -->
         </div>
       </div>
       <div class="content-block belongs-page belongs-page--home" style="display:none">
@@ -238,20 +243,32 @@
             </video>
           </div>
           <div class="about-services__right">
-            <div class="about-services__medium about-services--radio">
-              <img data-src="/images/icons8-Microphone-100-white.png"/>
+            <div
+              data-page="home"
+              data-bg="/images/services/bg_radio.jpg"
+              class="about-services__medium about-services--radio gtc-lazyload">
+              <img class="gtc-lazyload" data-page="home" data-src="/images/icons8-Microphone-100-white.png"/>
               <span>RADIO</span>
             </div>
-            <div class="about-services__medium about-services--tv">
-              <img data-src="/images/icons8-Monitor-100-white.png"/>
+            <div
+              data-page="home"
+              data-bg="/images/services/bg_tv.jpg"
+              class="about-services__medium about-services--tv gtc-lazyload">
+              <img class="gtc-lazyload" data-page="home" data-src="/images/icons8-Monitor-100-white.png"/>
               <span>TV</span>
             </div>
-            <div class="about-services__medium about-services--experience">
-              <img data-src="/images/icons8-Eye-100-white.png"/>
+            <div
+              data-page="home"
+              data-bg="/images/services/bg_experience.jpg"
+              class="about-services__medium about-services--experience gtc-lazyload">
+              <img class="gtc-lazyload" data-page="home" data-src="/images/icons8-Eye-100-white.png"/>
               <span>EXPERIMENTAL</span>
             </div>
-            <div class="about-services__medium about-services--digital">
-              <img data-src="/images/icons8-Resolution-100-white.png"/>
+            <div
+              data-page="home"
+              data-bg="/images/services/bg_digital.jpg"
+              class="about-services__medium about-services--digital gtc-lazyload">
+              <img class="gtc-lazyload" data-page="home" data-src="/images/icons8-Resolution-100-white.png"/>
               <span>DIGITAL</span>
             </div>
           </div>
@@ -264,7 +281,9 @@
       -->
       <div class="content-block belongs-page belongs-page--about" style="display:none">
         <div
-          class="about-section about-section--first parallax">
+          data-bg="/images/img_mountains01.jpg"
+          data-page="about"
+          class="about-section about-section--first parallax gtc-lazyload">
           <h1>DIGITAL<br/>MARKETING</h1>
           <h3>UNLIKE ANYTHING YOU COULD IMAGINE</h3>
           <span>SCROLL DOWN</span>
@@ -278,24 +297,29 @@
       </svg>
       <div class="content-block belongs-page belongs-page--about" style="display:none">
         <div
-          class="about-section about-section--second">
+          data-bg="/images/img_crowd.jpg"
+          data-page="about"
+          class="about-section about-section--second gtc-lazyload">
           <h1
             data-aos="fade-up">WE CONNECT YOU TO YOUR <span>GLOBAL</span> FANS</h1>
         </div>
       </div>
       <div class="content-block belongs-page belongs-page--about" style="display:none">
         <div
-          class="about-section about-type about-section--third">
+          data-bg="/images/img_red01.jpg"
+          data-page="about"
+          class="about-section about-type about-section--third gtc-lazyload">
           <div
             data-aos="fade-up"
             class="about-section--third__top about-type__top">
-            <img data-src="/images/gtc-logo-bug-white.png"/>
+            <img class="gtc-lazyload" data-page="about" data-src="/images/gtc-logo-bug-white.png"/>
             <span class="top-text">PRINT</span>
           </div>
           <img
             data-aos="fade-left"
             data-aos-duration="1500"
-            class="about-section--third__image"
+            class="about-section--third__image gtc-lazyload"
+            data-page="about"
             data-src="/images/9edf4-shania.jpg"/>
           <div
             data-aos="fade-up"
@@ -310,7 +334,7 @@
           <div
             data-aos="fade-up"
             class="about-section--fourth__top about-type__top">
-            <img data-src="/images/gtc-logo-bug-white.png"/>
+            <img class="gtc-lazyload" data-page="about" data-src="/images/gtc-logo-bug-white.png"/>
             <span class="top-text">MOBILE</span>
           </div>
           <div
@@ -318,15 +342,15 @@
             <img
               data-aos="zoom-in-left"
               data-aos-duration="1500"
-              class="center-image about-section--fourth__left-image" data-src="/images/mobile-left.jpg"/>
+              class="center-image about-section--fourth__left-image gtc-lazyload" data-page="about" data-src="/images/mobile-left.jpg"/>
             <img
               data-aos="zoom-out"
               data-aos-duration="1000"
-              class="center-image about-section--fourth__center-image" data-src="/images/mobile-center.jpg"/>
+              class="center-image about-section--fourth__center-image gtc-lazyload" data-page="about" data-src="/images/mobile-center.jpg"/>
             <img
               data-aos="zoom-in-right"
               data-aos-duration="1500"
-              class="center-image about-section--fourth__right-image" data-src="/images/mobile-right.jpg"/>
+              class="center-image about-section--fourth__right-image gtc-lazyload" data-page="about" data-src="/images/mobile-right.jpg"/>
           </div>
           <div
             data-aos="zoom-out"
@@ -338,11 +362,13 @@
       </div>
       <div class="content-block belongs-page belongs-page--about" style="display:none">
         <div
-          class="about-section about-type about-section--fifth parallax">
+          data-bg="/images/img_red02.jpg"
+          data-page="about"
+          class="about-section about-type about-section--fifth parallax gtc-lazyload">
           <div
             data-aos="zoom-out"
             class="about-section--fifth__top about-type__top">
-            <img data-src="/images/gtc-logo-bug-white.png"/>
+            <img class="gtc-lazyload" data-page="about" data-src="/images/gtc-logo-bug-white.png"/>
             <span class="top-text">DIGITAL</span>
           </div>
           <video
@@ -458,6 +484,7 @@
   <script defer src="/javascripts/card-grid.js"></script>
   <script defer src="/javascripts/search.js"></script>
   <script defer src="/javascripts/index.js"></script>
+  <script defer src="/javascripts/lazyload.js"></script>
   <script defer src="/javascripts/init.js"></script>
   </script>
 </html>

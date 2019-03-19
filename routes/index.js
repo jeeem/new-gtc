@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 var router = express.Router();
 var request = require('request');
 var rp = require('request-promise-native');
@@ -17,7 +18,7 @@ router.post('/email/', function(req, res, next) {
 
 router.get('/*', function(req, res, next) {
   console.log('serving up a static HTML file');
-  res.sendFile(path.join(__dirname + '../public/index.html'));
+  res.sendFile(path.join(__dirname, '..', 'public/index.html'));
 });
 
 module.exports = router;

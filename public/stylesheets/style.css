@@ -307,7 +307,6 @@
   max-width: 100%;
   position: relative; }
   .about-section--first {
-    background-image: url(/images/img_mountains01.jpg);
     background-position: center;
     background-size: cover;
     color: white;
@@ -363,7 +362,6 @@
         .about-section--first span {
           font-size: 10px; } }
   .about-section--second {
-    background-image: url(/images/img_crowd.jpg);
     background-position: center;
     background-size: cover;
     color: white;
@@ -386,7 +384,6 @@
       font-weight: 900;
       border-radius: 10px; }
   .about-section--third {
-    background-image: url(/images/img_red01.jpg);
     background-position: center;
     background-size: cover;
     color: white;
@@ -409,7 +406,6 @@
       min-width: 100px;
       width: 20%; }
   .about-section--fifth {
-    background-image: url(/images/img_red02.jpg);
     background-position: center;
     background-size: cover;
     color: white;
@@ -565,7 +561,6 @@
     object-fit: cover;
     z-index: -2; }
   .video-wrapper .full-video-poster {
-    background-image: url(/images/revsliders/covers/5.png);
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -637,14 +632,6 @@
     @media (max-width: 760px) {
       .about-services__medium {
         width: 100%; } }
-  .about-services--radio {
-    background-image: url("/images/services/bg_radio.jpg"); }
-  .about-services--tv {
-    background-image: url("/images/services/bg_tv.jpg"); }
-  .about-services--experience {
-    background-image: url("/images/services/bg_experience.jpg"); }
-  .about-services--digital {
-    background-image: url("/images/services/bg_digital.jpg"); }
 
 @keyframes loaderAnim {
   to {
@@ -1336,7 +1323,7 @@ a {
   opacity: 0;
   transition: opacity 0.2s; }
 
-.card__img.loaded {
+.card__img.gtc-lazyload--loaded {
   opacity: 1; }
 
 .card .card__top {

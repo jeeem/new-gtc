@@ -30,6 +30,14 @@ _HELPERS.storeWithExpiration = {
 		return info.val
 	}
 };
+
+_HELPERS.isInViewport = function (elem) {
+	var distance = elem.getBoundingClientRect();
+	return (
+		distance.top <= ((window.innerHeight || document.documentElement.clientHeight) + 500)
+	);
+};
+
 /*!
  * Apply a CSS animation to an element
  * (c) 2018 Chris Ferdinandi, MIT License, https://gomakethings.com
@@ -194,9 +202,9 @@ _HELPERS.createCardMarkup = function(data) {
     <div class="product__bg"></div>
     <div class="card__top">
       <img
-        src="${imageUrl}"
+        data-page="home"
         data-src="${imageUrl}"
-        class="card__img${loadedClass}"/>
+        class="gtc-lazyload card__img${loadedClass}"/>
     </div>
 
     <div
@@ -205,8 +213,9 @@ _HELPERS.createCardMarkup = function(data) {
       <h2 class="card-title animated fast">${data.tourName}</h2>
       <div class="card-button animated faster">View Project</div>
       <div
-        class="card-blur"
-        style="background-image: url(${imageUrl})"></div>
+        class="card-blur gtc-lazyload"
+        data-bg="${imageUrl}"
+        data-page="home"></div>
         <div class="card-filter"></div>
     </div>
   </div>`;

@@ -99,6 +99,12 @@ GTC_ROUTER.subscribe(data => {
   }
 }, 'restart-parallax');
 
+// lazyload change page
+GTC_ROUTER.subscribe(data => {
+  let currentPage = data.current.page !== 'tour' ? data.current.page : 'home';
+  GTC_LAZY_LOAD.loadPage(currentPage);
+}, 'lazy-load-nav');
+
 // fetched all homepage cards, add them to dom
 GTC_STATE.subscribe(pubObj => {
   if (pubObj.type !== GTC_STATE.PUBLISH_ACTIONS.ADD_HOME) {
@@ -114,12 +120,6 @@ GTC_STATE.subscribe(pubObj => {
   GTC_DOM.gridItems = Array.from(GTC_DOM.grid.querySelectorAll('.card'));
   let GTC_ITEMS = [];
   GTC_DOM.gridItems.forEach(item => GTC_ITEMS.push(new Item(item)));
-
-  var lazyLoadInstance = new LazyLoad({
-      elements_selector: '[data-src]',
-      threshold: 1000
-      // ... more custom settings?
-  });
 });
 
 // we're at an individual tour page
@@ -160,6 +160,7 @@ GTC_STATE.subscribe(pubObj => {
 
 _HELPERS.getHomepageCards().then(data => {
   GTC_STATE.addHomeCards(data);
+  GTC_LAZY_LOAD.init();
   GTC_ROUTER.init()
   loadingHandler.init();
 });
