@@ -1,5 +1,12 @@
 // init app here
 
+window.onpopstate = function(event) {
+  if (GTC_ROUTER.currentNavObject.page === 'tour') {
+    GTC_DOM.details.DOM.close.click();
+  }
+  GTC_ROUTER.navigate();
+};
+
 // landing on tour page
 GTC_ROUTER.subscribe(data => {
   if (data.previous) {
@@ -28,7 +35,7 @@ GTC_ROUTER.subscribe(data => {
   }
   if (isActuallyHome) {
     loadingHandler.changePageTitle('home');
-    if (loadingHandler.didInit) {
+    if (loadingHandler.didInit && !previousIsHome) {
       loadingHandler.showLoading();
       setTimeout(() => loadingHandler.hideLoading(), 800);
       _HELPERS.closeDrawer();

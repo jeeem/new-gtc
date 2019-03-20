@@ -184,6 +184,7 @@ _HELPERS.createCardMarkup = function(data) {
   let wideClass = "";
   let loadedClass = "";
   let imageUrl = null;
+  let preloadImg = false;
   if (data.isWide) {
     imageUrl = data.wideCardSrc;
     wideClass = " card--large";
@@ -191,7 +192,8 @@ _HELPERS.createCardMarkup = function(data) {
     imageUrl = data.cardSrc;
   } else {
     imageUrl = data.printItems[0].thumbnailURL;
-    loadedClass = " loaded";
+    loadedClass = " gtc-lazyload--loaded";
+    preloadImg = true;
   }
   return `<div class="card${wideClass}"
     data-print-items='${data.printItems ? JSON.stringify(data.printItems) : ''}'
@@ -204,12 +206,13 @@ _HELPERS.createCardMarkup = function(data) {
       <img
         data-page="home"
         data-src="${imageUrl}"
-        class="gtc-lazyload card__img${loadedClass}"/>
+        class="gtc-lazyload card__img${loadedClass}"
+        ${preloadImg ? 'src="' + imageUrl + '"' : ''}/>
     </div>
 
     <div
       class="card__bottom">
-      <h3 class="card-subtext animated">${data.subTitle}</h3>
+      <h3 class="card-subtext animated">${data.subTitle ? data.subTitle : ''}</h3>
       <h2 class="card-title animated fast">${data.tourName}</h2>
       <div class="card-button animated faster">View Project</div>
       <div

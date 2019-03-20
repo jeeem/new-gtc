@@ -149,6 +149,7 @@
     .card:nth-child(2n+2) {
       margin-right: 0; } }
   .card__top {
+    background-color: black;
     display: flex;
     flex-direction: column; }
     .card__top img {

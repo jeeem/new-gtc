@@ -109,10 +109,15 @@ class Details {
       this.DOM.img.src = info.img;
       imgCached = !!this.DOM.img.complete;
       let bg = document.getElementsByClassName('details__bg--down')[0];
-      bg.style.backgroundImage = `url(${info.img})`;
       this.DOM.title.innerHTML = info.title;
-      this.DOM.deco.style.backgroundImage = `url(${info.img})`;
       this.DOM.subtitle.innerHTML = info.subtitle;
+      if (window.matchMedia("(min-width: 751px)").matches) {
+        bg.style.backgroundImage = `url(${info.img})`;
+        this.DOM.deco.style.backgroundImage = `url(${info.img})`;
+      } else {
+        bg.style.backgroundImage = ``;
+        this.DOM.deco.style.backgroundImage = ``;
+      }
       if (imgCached && cb) {
         return cb();
       }
@@ -137,7 +142,11 @@ class Details {
         this.DOM.productBg = data.productBg;
         this.DOM.productImg = data.productImg;
         let bg = document.getElementsByClassName('details__bg--down')[0];
-        bg.style.backgroundImage = `url(${this.DOM.productImg.src})`;
+        if (window.matchMedia("(min-width: 751px)").matches) {
+          bg.style.backgroundImage = `url(${this.DOM.productImg.src})`;
+        } else {
+          bg.style.backgroundImage = '';
+        }
 
         this.DOM.productBg.style.opacity = 0;
         this.DOM.productImg.style.opacity = 0;
