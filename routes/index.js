@@ -15,9 +15,6 @@ router.get('/proxy/:id', function(req, res, next) {
     var bytes = 0;
 
     response.setEncoding("binary");
-    response.headers["cache-control"] = "public";
-    delete response.headers["pragma"];
-    delete response.headers["set-cookie"];
     response.on("data", function(chunk) {
       imageBuffer.write(chunk, bytes, "binary");
       bytes += chunk.length;
@@ -25,7 +22,7 @@ router.get('/proxy/:id', function(req, res, next) {
 
     response.on("end", function() {
       res.type('image/jpg');
-      res.set('Cache-Control', 'public');
+      res.set('Cache-Control', 'public, max-age=2592000');
       res.send(imageBuffer);
     });
 
