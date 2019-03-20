@@ -234,11 +234,11 @@ _HELPERS.cardSrcId = function(cardSrcURL) {
   return false;
 };
 _HELPERS.getHomepageCards = function() {
-  // const CACHED_CARDS = _HELPERS.storeWithExpiration.get('HOME_CARDS');
-  // if (CACHED_CARDS) {
-  //   console.log('retrieved cards from cache');
-  //   return Promise.resolve(CACHED_CARDS);
-  // }
+  const CACHED_CARDS = _HELPERS.storeWithExpiration.get('HOME_CARDS');
+  if (CACHED_CARDS) {
+    console.log('retrieved cards from cache');
+    return Promise.resolve(CACHED_CARDS);
+  }
   return window.fetch(
     `http://www.globaltourcreatives.com/api/?get=home`,
     {
@@ -297,11 +297,9 @@ _HELPERS.getHomepageCards = function() {
             || index === 9
           ) {
             thisCard.isWide = true;
-            thisCard.wideCardSrc = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(thisCard.wideCardSrc)}`;
-          } else {
-            thisCard.cardSrc = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(thisCard.cardSrc)}`;
           }
-          console.log('thisCard', thisCard);
+          thisCard.wideCardSrc = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(thisCard.wideCardSrc)}`;
+          thisCard.cardSrc = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(thisCard.cardSrc)}`;
         });
         return newdata[0].cards;
       });

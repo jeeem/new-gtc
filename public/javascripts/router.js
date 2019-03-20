@@ -62,6 +62,12 @@ class GTCRouter {
     } else if (navObj.page.includes('tour/')) {
       navObj.query = navObj.page.substring(5);
       navObj.page = 'tour';
+    } else if (
+      navObj.page !== 'home'
+      && navObj.page !== 'about'
+      && navObj.page !== 'contact'
+    ) {
+      navObj.page = 'home';
     }
     return navObj;
   }
