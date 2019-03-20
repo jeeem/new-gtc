@@ -166,8 +166,53 @@ GTC_STATE.subscribe(pubObj => {
   }
 });
 
-_HELPERS.getHomepageCards().then(data => {
+// fetched homepage videos, add them to dom
+GTC_STATE.subscribe(pubObj => {
+  if (pubObj.type !== GTC_STATE.PUBLISH_ACTIONS.ADD_VIDEOS) {
+    return;
+  }
+  const twoVideos = _.sampleSize(pubObj.data, 2);
+  document.getElementById('fullVideoPoster').dataset.bg = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(twoVideos[0].wideCardSrc)}`;
+  let parsedName = _HELPERS.parseTourName(twoVideos[0].tourName.toUpperCase());
+  twoVideos[0].tourName = parsedName.parsed ? parsedName.title : twoVideos[0].tourName.toUpperCase();
+  twoVideos[0].subTitle = parsedName.parsed ? parsedName.subTitle : '';
+  document.querySelector('.artist-name').innerHTML = twoVideos[0].tourName;
+
+  const fullVideoDetailsLarge = document.querySelector('.info-container h2');
+  const fullVideoDetailsSmall = document.querySelector('.info-container span');
+  fullVideoDetailsSmall.innerHTML = twoVideos[0].subTitle;
+
+  const leftVideo = document.getElementById('aboutServicesLeft');
+  leftVideo.src = twoVideos[1].videoSrc;
+  leftVideo.dataset.poster = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(twoVideos[1].wideCardSrc)}`;
+
+  const fullVideo = document.getElementById('fullVideo');
+  fullVideo.onloadedmetadata = (event) => {
+    let durationNode = fullVideoDetailsLarge;
+    if (fullVideoDetailsSmall.innerText && fullVideoDetailsSmall.innerText.length > 4) {
+      fullVideoDetailsLarge.innerHTML = fullVideoDetailsSmall.innerHTML;
+      fullVideoDetailsLarge.classList.remove('duration');
+      fullVideoDetailsSmall.classList.add('duration');
+      durationNode = fullVideoDetailsSmall;
+    }
+    durationNode.innerHTML = Math.floor(fullVideo.duration) + ' seconds';
+    GTC_STATE.unsubscribe('add-home-videos');
+    fullVideo.onloadedmetadata = null;
+  };
+  fullVideo.src = twoVideos[0].videoSrc;
+}, 'add-home-videos');
+
+_HELPERS.getHomepageCards()
+.then(data => {
   GTC_STATE.addHomeCards(data);
+})
+.then(() => {
+  return _HELPERS.getHomepageVideos();
+})
+.then(data => {
+  if (data) {
+    GTC_STATE.addHomeVideos(data);
+  }
   GTC_LAZY_LOAD.init();
   GTC_ROUTER.init()
   loadingHandler.init();

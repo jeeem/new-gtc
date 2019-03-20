@@ -228,6 +228,10 @@ _HELPERS.getFallbackCards = function() {
   console.log('oops! something went wrong - getting fallback cards');
   return GTC_STATE.CARDS.FALLBACK;
 };
+_HELPERS.getFallbackVideos = function() {
+  console.log('oops! something went wrong - getting fallback videos');
+  return GTC_STATE.VIDEOS.FALLBACK;
+};
 
 _HELPERS.cardSrcId = function(cardSrcURL) {
   var arr = cardSrcURL.match(/token=(.*)/);
@@ -236,6 +240,29 @@ _HELPERS.cardSrcId = function(cardSrcURL) {
   }
   return false;
 };
+
+_HELPERS.getHomepageVideos = function() {
+  const CACHED_VIDEOS = _HELPERS.storeWithExpiration.get('HOME_VIDEOS');
+  if (CACHED_VIDEOS) {
+    console.log('retrieved videos from cache');
+    return Promise.resolve(CACHED_VIDEOS);
+  }
+  return window.fetch(
+    `http://www.globaltourcreatives.com/api/?get=home`,
+    {
+      method: 'GET',
+      mode: 'cors'
+    })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(newdata) {
+      _HELPERS.storeWithExpiration.set('HOME_VIDEOS', newdata[1].videos, _HELPERS.DAY_IN_MS);
+    }).catch(error => {
+      return _HELPERS.getFallbackVideos();
+    });
+};
+
 _HELPERS.getHomepageCards = function() {
   const CACHED_CARDS = _HELPERS.storeWithExpiration.get('HOME_CARDS');
   if (CACHED_CARDS) {
@@ -252,6 +279,7 @@ _HELPERS.getHomepageCards = function() {
       return response.json();
     })
     .then(function(newdata) {
+      _HELPERS.storeWithExpiration.set('HOME_VIDEOS', newdata[1].videos, _HELPERS.DAY_IN_MS);
       let promiseArray = [];
       newdata[0].cards.forEach(item => {
         promiseArray.push(new Promise((resolve, reject) => {
@@ -306,6 +334,8 @@ _HELPERS.getHomepageCards = function() {
         });
         return newdata[0].cards;
       });
+
+
     }).catch(error => {
       return _HELPERS.getFallbackCards();
     });

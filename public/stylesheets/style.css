@@ -547,6 +547,8 @@
       @media (max-width: 761px) {
         .video-wrapper .info-container h2 {
           font-size: 17px; } }
+    .video-wrapper .info-container .duration {
+      opacity: 0.3; }
   .video-wrapper .video-overlay-play-button {
     opacity: 0.4;
     width: 100px;

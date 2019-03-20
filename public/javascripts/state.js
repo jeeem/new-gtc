@@ -6,6 +6,7 @@ class GTCState {
     this.PUBLISH_ACTIONS = {};
     this.PUBLISH_ACTIONS.ADD_HOME = 'add/home';
     this.PUBLISH_ACTIONS.ADD_SINGLE_TOUR = 'add/tour';
+    this.PUBLISH_ACTIONS.ADD_VIDEOS = 'add/videos';
 
     this.CARDS = {};
     this.CARDS.FALLBACK = null;
@@ -13,6 +14,10 @@ class GTCState {
     this.CARDS.LOADED_IDS = {};
     this.CARDS.SINGLE_TOUR = {};
     this.CARDS.QUEUED_SELECT = null;
+
+    this.VIDEOS = {};
+    this.VIDEOS.HOME = null;
+    this.VIDEOS.FALLBACK = null;
   }
   addHomeCards(homeCardsArray) {
     this.CARDS.HOME = homeCardsArray;
@@ -26,6 +31,13 @@ class GTCState {
     this.publish({
       type: this.PUBLISH_ACTIONS.ADD_SINGLE_TOUR,
       data: this.CARDS.SINGLE_TOUR
+    });
+  }
+  addHomeVideos(homeVideosArray) {
+    this.VIDEOS.HOME = homeVideosArray;
+    this.publish({
+      type: this.PUBLISH_ACTIONS.ADD_VIDEOS,
+      data: this.VIDEOS.HOME
     });
   }
   addCard(tourId) {
@@ -407,5 +419,68 @@ GTC_STATE.CARDS.FALLBACK = [
             "thumbnailURL":"http://www.globaltourcreatives.com/media/revisions/thumbs/161004.jpg"
          }
       ]
+   }
+];
+
+GTC_STATE.VIDEOS.FALLBACK = [
+   {
+      "tourName":"Carrie Underwood - Cry Pretty Tour",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=vhT6FV.jpg",
+      "videoSrc":"http://d2rsmyw7crhe5b.cloudfront.net/31plv9.mp4",
+      "Description":"NULL"
+   },
+   {
+      "tourName":"Shawn Mendes 2019",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=3QTa2l.jpg",
+      "videoSrc":"http://d2rsmyw7crhe5b.cloudfront.net/ZEvcxB.mp4",
+      "Description":"NULL"
+   },
+   {
+      "tourName":"The Chainsmokers 2019",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=Gk65E2.jpg",
+      "videoSrc":"http://d2rsmyw7crhe5b.cloudfront.net/8CjYyo.mp4",
+      "Description":"NULL"
+   },
+   {
+      "tourName":"Cher - Here We Go Again Tour 2019",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=B9U3q1.jpg",
+      "videoSrc":"http://d2rsmyw7crhe5b.cloudfront.net/K4aDd0.mp4",
+      "Description":"NULL"
+   },
+   {
+      "tourName":"Backstreet Boys - DNA World Tour 2019",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=Pmvfap.jpg",
+      "videoSrc":"http://d2rsmyw7crhe5b.cloudfront.net/QylcgN.mp4",
+      "Description":"NULL"
+   },
+   {
+      "tourName":"Lady Gaga - Las Vegas Residency",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=OyMJl7.jpg",
+      "videoSrc":"http://d2rsmyw7crhe5b.cloudfront.net/AWOwPv.mp4",
+      "Description":"NULL"
+   },
+   {
+      "tourName":"Eagles 2018",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=6sh91X.jpg",
+      "videoSrc":"http://d2rsmyw7crhe5b.cloudfront.net/8KiOLa.mp4",
+      "Description":"NULL"
+   },
+   {
+      "tourName":"John Mayer 2019",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=eQNHLd.jpg",
+      "videoSrc":"http://d2rsmyw7crhe5b.cloudfront.net/5VBsFp.mp4",
+      "Description":"NULL"
+   },
+   {
+      "tourName":"Cirque du Soleil - CRYSTAL",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=wW2S5D.jpg",
+      "videoSrc":"http://d2rsmyw7crhe5b.cloudfront.net/pkw3tN.mp4",
+      "Description":"NULL"
+   },
+   {
+      "tourName":"Michelle Obama",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=26eTTE.jpg",
+      "videoSrc":"http://d2rsmyw7crhe5b.cloudfront.net/baKzKJ.mp4",
+      "Description":"NULL"
    }
 ];
