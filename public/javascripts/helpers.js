@@ -30,7 +30,7 @@ _HELPERS.storeWithExpiration = {
 		return info.val
 	}
 };
-var offscreenAmt = window.matchMedia("(min-width: 751px)").matches ? 750 : 10000;
+var offscreenAmt = window.matchMedia("(min-width: 751px)").matches ? 1500 : 10000;
 _HELPERS.isInViewport = function (elem) {
 	var distance = elem.getBoundingClientRect();
 	return (
