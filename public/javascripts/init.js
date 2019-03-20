@@ -2,6 +2,7 @@
 
 window.onpopstate = function(event) {
   if (GTC_ROUTER.currentNavObject.page === 'tour') {
+    tobi.close();
     GTC_DOM.details.DOM.close.click();
   }
   GTC_ROUTER.navigate();
