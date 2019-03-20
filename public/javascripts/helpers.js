@@ -226,12 +226,19 @@ _HELPERS.getFallbackCards = function() {
   return GTC_STATE.CARDS.FALLBACK;
 };
 
-_HELPERS.getHomepageCards = function() {
-  const CACHED_CARDS = _HELPERS.storeWithExpiration.get('HOME_CARDS');
-  if (CACHED_CARDS) {
-    console.log('retrieved cards from cache');
-    return Promise.resolve(CACHED_CARDS);
+_HELPERS.cardSrcId = function(cardSrcURL) {
+  var arr = cardSrcURL.match(/token=(.*)/);
+  if (arr != null) { // Did it match?
+    return(arr[1]);
   }
+  return false;
+};
+_HELPERS.getHomepageCards = function() {
+  // const CACHED_CARDS = _HELPERS.storeWithExpiration.get('HOME_CARDS');
+  // if (CACHED_CARDS) {
+  //   console.log('retrieved cards from cache');
+  //   return Promise.resolve(CACHED_CARDS);
+  // }
   return window.fetch(
     `http://www.globaltourcreatives.com/api/?get=home`,
     {
@@ -265,8 +272,7 @@ _HELPERS.getHomepageCards = function() {
       return Promise.all(promiseArray).then(values => {
         return values;
       }).then(valuesArray => {
-        newdata[0].cards.forEach((item, index) => {
-          let thisCard = newdata[0].cards[index];
+        newdata[0].cards.forEach((thisCard, index) => {
           let thisSpotsArray = valuesArray[index];
           thisSpotsArray.forEach(spotsItem => {
             if (spotsItem.tvSpots) {
@@ -291,7 +297,11 @@ _HELPERS.getHomepageCards = function() {
             || index === 9
           ) {
             thisCard.isWide = true;
+            thisCard.wideCardSrc = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(thisCard.wideCardSrc)}`;
+          } else {
+            thisCard.cardSrc = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(thisCard.cardSrc)}`;
           }
+          console.log('thisCard', thisCard);
         });
         return newdata[0].cards;
       });
