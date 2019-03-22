@@ -377,9 +377,7 @@ constructor(el) {
       tourid: this.DOM.product.dataset.tourid
   };
   this.isLarge = el.classList.contains('card--large');
-  if (this.info.tourid !== '9OIg6a') {
-    GTC_STATE.addCard(this.info.tourid);
-  }
+  GTC_STATE.addCard(this.info.tourid);
 	this.initEvents();
 }
     initEvents() {
