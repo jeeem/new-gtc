@@ -118,9 +118,9 @@ GTC_STATE.subscribe(pubObj => {
   if (pubObj.type !== GTC_STATE.PUBLISH_ACTIONS.ADD_HOME) {
     return;
   }
-  if (!_HELPERS.storeWithExpiration.get('HOME_CARDS')) {
-    _HELPERS.storeWithExpiration.set('HOME_CARDS', pubObj.data, _HELPERS.DAY_IN_MS);
-  }
+  // if (!_HELPERS.storeWithExpiration.get('HOME_CARDS')) {
+  //   _HELPERS.storeWithExpiration.set('HOME_CARDS', pubObj.data, _HELPERS.DAY_IN_MS);
+  // }
   pubObj.data.forEach(cardJson => {
     var cardNode = _HELPERS.htmlToElement(_HELPERS.createCardMarkup(cardJson));
     GTC_DOM.grid.append(cardNode);
@@ -187,7 +187,8 @@ GTC_STATE.subscribe(pubObj => {
 
   const leftVideo = document.getElementById('aboutServicesLeft');
   leftVideo.src = twoVideos[1].videoSrc;
-  leftVideo.dataset.poster = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(twoVideos[1].wideCardSrc)}`;
+  // leftVideo.dataset.poster = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(twoVideos[1].wideCardSrc)}`;
+  leftVideo.dataset.poster = twoVideos[1].wideCardSrc;
 
   fullVideo.onloadedmetadata = (event) => {
     let durationNode = fullVideoDetailsLarge;

@@ -242,11 +242,11 @@ _HELPERS.cardSrcId = function(cardSrcURL) {
 };
 
 _HELPERS.getHomepageVideos = function() {
-  const CACHED_VIDEOS = _HELPERS.storeWithExpiration.get('HOME_VIDEOS');
-  if (CACHED_VIDEOS) {
-    console.log('retrieved videos from cache');
-    return Promise.resolve(CACHED_VIDEOS);
-  }
+  // const CACHED_VIDEOS = _HELPERS.storeWithExpiration.get('HOME_VIDEOS');
+  // if (CACHED_VIDEOS) {
+  //   console.log('retrieved videos from cache');
+  //   return Promise.resolve(CACHED_VIDEOS);
+  // }
   return window.fetch(
     `http://www.globaltourcreatives.com/api/?get=home`,
     {
@@ -257,18 +257,19 @@ _HELPERS.getHomepageVideos = function() {
       return response.json();
     })
     .then(function(newdata) {
-      _HELPERS.storeWithExpiration.set('HOME_VIDEOS', newdata[1].videos, _HELPERS.DAY_IN_MS);
+      // _HELPERS.storeWithExpiration.set('HOME_VIDEOS', newdata[1].videos, _HELPERS.DAY_IN_MS);
+      return newdata[1].videos;
     }).catch(error => {
       return _HELPERS.getFallbackVideos();
     });
 };
 
 _HELPERS.getHomepageCards = function() {
-  const CACHED_CARDS = _HELPERS.storeWithExpiration.get('HOME_CARDS');
-  if (CACHED_CARDS) {
-    console.log('retrieved cards from cache');
-    return Promise.resolve(CACHED_CARDS);
-  }
+  // const CACHED_CARDS = _HELPERS.storeWithExpiration.get('HOME_CARDS');
+  // if (CACHED_CARDS) {
+  //   console.log('retrieved cards from cache');
+  //   return Promise.resolve(CACHED_CARDS);
+  // }
   return window.fetch(
     `http://www.globaltourcreatives.com/api/?get=home`,
     {
@@ -279,7 +280,7 @@ _HELPERS.getHomepageCards = function() {
       return response.json();
     })
     .then(function(newdata) {
-      _HELPERS.storeWithExpiration.set('HOME_VIDEOS', newdata[1].videos, _HELPERS.DAY_IN_MS);
+      // _HELPERS.storeWithExpiration.set('HOME_VIDEOS', newdata[1].videos, _HELPERS.DAY_IN_MS);
       let promiseArray = [];
       newdata[0].cards.forEach(item => {
         promiseArray.push(new Promise((resolve, reject) => {
@@ -329,8 +330,8 @@ _HELPERS.getHomepageCards = function() {
           ) {
             thisCard.isWide = true;
           }
-          thisCard.wideCardSrc = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(thisCard.wideCardSrc)}`;
-          thisCard.cardSrc = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(thisCard.cardSrc)}`;
+          thisCard.wideCardSrc = thisCard.wideCardSrc;
+          thisCard.cardSrc = thisCard.cardSrc;
         });
         return newdata[0].cards;
       });

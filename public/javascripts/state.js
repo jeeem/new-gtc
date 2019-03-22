@@ -95,8 +95,8 @@ GTC_STATE.CARDS.FALLBACK = [
    {
       "tourID":"sJ90qe",
       "tourName":"MICHELLE OBAMA",
-      "cardSrc":"http://52.87.249.145:3000/proxy/qvQQhC.jpg",
-      "wideCardSrc":"http://52.87.249.145:3000/proxy/26eTTE.jpg",
+      "cardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=qvQQhC.jpg",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=26eTTE.jpg",
       "subTitle":false,
       "tvSpots":[
          {
@@ -122,8 +122,8 @@ GTC_STATE.CARDS.FALLBACK = [
    {
       "tourID":"3zcoMV",
       "tourName":"SHAWN MENDES",
-      "cardSrc":"http://52.87.249.145:3000/proxy/R6kmAM.jpg",
-      "wideCardSrc":"http://52.87.249.145:3000/proxy/3QTa2l.jpg",
+      "cardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=R6kmAM.jpg",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=3QTa2l.jpg",
       "subTitle":"2019",
       "tvSpots":[
          {
@@ -154,8 +154,8 @@ GTC_STATE.CARDS.FALLBACK = [
    {
       "tourID":"4QJquL",
       "tourName":"DIANA ROSS",
-      "cardSrc":"http://52.87.249.145:3000/proxy/yeQuUS.jpg",
-      "wideCardSrc":"http://52.87.249.145:3000/proxy/MKi6c3.jpg",
+      "cardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=yeQuUS.jpg",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=MKi6c3.jpg",
       "subTitle":"2019",
       "radioSpots":[
          {
@@ -175,8 +175,8 @@ GTC_STATE.CARDS.FALLBACK = [
    {
       "tourID":"GZEfu3",
       "tourName":"CIRQUE DU SOLEIL",
-      "cardSrc":"http://52.87.249.145:3000/proxy/zyG13z.jpg",
-      "wideCardSrc":"http://52.87.249.145:3000/proxy/wW2S5D.jpg",
+      "cardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=zyG13z.jpg",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=wW2S5D.jpg",
       "subTitle":"CRYSTAL",
       "tvSpots":[
          {
@@ -207,8 +207,8 @@ GTC_STATE.CARDS.FALLBACK = [
    {
       "tourID":"es94DQ",
       "tourName":"EAGLES",
-      "cardSrc":"http://52.87.249.145:3000/proxy/UYyL98.jpg",
-      "wideCardSrc":"http://52.87.249.145:3000/proxy/6sh91X.jpg",
+      "cardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=UYyL98.jpg",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=6sh91X.jpg",
       "subTitle":"2018",
       "tvSpots":[
          {
@@ -234,8 +234,8 @@ GTC_STATE.CARDS.FALLBACK = [
    {
       "tourID":"D9pqBF",
       "tourName":"JOHN MAYER",
-      "cardSrc":"http://52.87.249.145:3000/proxy/TF9EZb.jpg",
-      "wideCardSrc":"http://52.87.249.145:3000/proxy/eQNHLd.jpg",
+      "cardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=TF9EZb.jpg",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=eQNHLd.jpg",
       "subTitle":"2019",
       "tvSpots":[
          {
@@ -261,8 +261,8 @@ GTC_STATE.CARDS.FALLBACK = [
    {
       "tourID":"qzJuH7",
       "tourName":"CARRIE UNDERWOOD",
-      "cardSrc":"http://52.87.249.145:3000/proxy/JNkIN6.jpg",
-      "wideCardSrc":"http://52.87.249.145:3000/proxy/vhT6FV.jpg",
+      "cardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=JNkIN6.jpg",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=vhT6FV.jpg",
       "subTitle":"CRY PRETTY TOUR",
       "tvSpots":[
          {
@@ -293,8 +293,8 @@ GTC_STATE.CARDS.FALLBACK = [
    {
       "tourID":"9OIg6a",
       "tourName":"ARIANA GRANDE",
-      "cardSrc":"http://52.87.249.145:3000/proxy/lKoPJB.jpg",
-      "wideCardSrc":"http://52.87.249.145:3000/proxy/YplFxc.jpg",
+      "cardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=lKoPJB.jpg",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=YplFxc.jpg",
       "subTitle":"2019",
       "tvSpots":[
          {
@@ -320,8 +320,8 @@ GTC_STATE.CARDS.FALLBACK = [
    {
       "tourID":"mpuQua",
       "tourName":"THE CHAINSMOKERS",
-      "cardSrc":"http://52.87.249.145:3000/proxy/5Ys2S0.jpg",
-      "wideCardSrc":"http://52.87.249.145:3000/proxy/Gk65E2.jpg",
+      "cardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=5Ys2S0.jpg",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=Gk65E2.jpg",
       "subTitle":"2019",
       "tvSpots":[
          {
@@ -348,8 +348,8 @@ GTC_STATE.CARDS.FALLBACK = [
    {
       "tourID":"WG0WOT",
       "tourName":"CHER",
-      "cardSrc":"http://52.87.249.145:3000/proxy/NeXDBa.jpg",
-      "wideCardSrc":"http://52.87.249.145:3000/proxy/B9U3q1.jpg",
+      "cardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=NeXDBa.jpg",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=B9U3q1.jpg",
       "subTitle":"HERE WE GO AGAIN TOUR 2019",
       "tvSpots":[
          {
@@ -376,8 +376,8 @@ GTC_STATE.CARDS.FALLBACK = [
    {
       "tourID":"ukr4Lm",
       "tourName":"BACKSTREET BOYS",
-      "cardSrc":"http://52.87.249.145:3000/proxy/Ebhcon.jpg",
-      "wideCardSrc":"http://52.87.249.145:3000/proxy/Pmvfap.jpg",
+      "cardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=Ebhcon.jpg",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=Pmvfap.jpg",
       "subTitle":"DNA WORLD TOUR 2019",
       "tvSpots":[
          {
@@ -403,8 +403,8 @@ GTC_STATE.CARDS.FALLBACK = [
    {
       "tourID":"oyItJp",
       "tourName":"BILLIE EILISH",
-      "cardSrc":"http://52.87.249.145:3000/proxy/7hGUrF.jpg",
-      "wideCardSrc":"http://52.87.249.145:3000/proxy/k0zIje.jpg",
+      "cardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=7hGUrF.jpg",
+      "wideCardSrc":"http://www.globaltourcreatives.com/media/asset_lib/download.php?token=k0zIje.jpg",
       "subTitle":"2019",
       "radioSpots":[
          {
