@@ -181,7 +181,10 @@ GTC_STATE.subscribe(pubObj => {
 
   // fullVideoPoster.dataset.bg = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(twoVideos[0].wideCardSrc)}`;
   fullVideoPoster.dataset.bg = twoVideos[0].wideCardSrc;
-  
+  if (fullVideoPoster.classList.contains('gtc-lazyload--loaded')) {
+    fullVideoPoster.style.backgroundImage = `url(${fullVideoPoster.dataset.bg})`;
+  }
+
   const parsedName = _HELPERS.parseTourName(twoVideos[0].tourName.toUpperCase());
   fullVideoArtist.innerHTML = parsedName.parsed ? parsedName.title : twoVideos[0].tourName.toUpperCase();
   fullVideoDetailsSmall.innerHTML = parsedName.parsed ? parsedName.subTitle : '';
@@ -190,6 +193,9 @@ GTC_STATE.subscribe(pubObj => {
   leftVideo.src = twoVideos[1].videoSrc;
   // leftVideo.dataset.poster = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(twoVideos[1].wideCardSrc)}`;
   leftVideo.dataset.poster = twoVideos[1].wideCardSrc;
+  if (leftVideo.classList.contains('gtc-lazyload--loaded')) {
+    leftVideo.poster = leftVideo.dataset.poster;
+  }
 
   fullVideo.onloadedmetadata = (event) => {
     let durationNode = fullVideoDetailsLarge;
