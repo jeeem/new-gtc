@@ -179,8 +179,9 @@ GTC_STATE.subscribe(pubObj => {
   const fullVideoDetailsLarge = document.querySelector('.info-container h2');
   const fullVideoDetailsSmall = document.querySelector('.info-container span');
 
-  fullVideoPoster.dataset.bg = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(twoVideos[0].wideCardSrc)}`;
-
+  // fullVideoPoster.dataset.bg = `http://52.87.249.145:3000/proxy/${_HELPERS.cardSrcId(twoVideos[0].wideCardSrc)}`;
+  fullVideoPoster.dataset.bg = twoVideos[0].wideCardSrc;
+  
   const parsedName = _HELPERS.parseTourName(twoVideos[0].tourName.toUpperCase());
   fullVideoArtist.innerHTML = parsedName.parsed ? parsedName.title : twoVideos[0].tourName.toUpperCase();
   fullVideoDetailsSmall.innerHTML = parsedName.parsed ? parsedName.subTitle : '';
