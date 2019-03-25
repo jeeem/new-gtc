@@ -114,7 +114,7 @@ class MailHandler {
     this.DOM = {};
     this.DOM.name = document.getElementById('mailName');
     this.DOM.email = document.getElementById('mailEmail');
-    this.DOM.body = document.getElementById('mailBody');
+    this.DOM.message = document.getElementById('mailBody');
     this.DOM.button = document.getElementById('mailButton');
 
     this.updateHref = this.updateHref.bind(this);
@@ -124,27 +124,26 @@ class MailHandler {
   updateData() {
     this.data.name = this.DOM.name.value;
     this.data.email = this.DOM.email.value;
-    this.data.body = this.DOM.body.value;
+    this.data.message = this.DOM.message.value;
   }
   updateHref(e) {
     e.preventDefault();
     this.data.name = this.DOM.name.value;
     this.data.email = this.DOM.email.value;
-    this.data.body = this.DOM.body.value;
+    this.data.message = this.DOM.message.value;
+    console.log('sending email to http://www.globaltourcreatives.com/api/?post=contactForm', this.data);
     window.fetch(
-      `/email/`,
+      `http://www.globaltourcreatives.com/api/?post=contactForm`,
       {
         method: 'POST',
-        mode: 'same-origin',
-        headers: {
-          "Content-Type": "application/json; charset=utf-8"
-        },
+        mode: 'cors',
         body: JSON.stringify(this.data)
       })
       .then(response => {
         return response.json();
       })
       .then(myJson => {
+        console.log('response from email server ', myJson);
         return myJson;
       })
       .catch(err => {
@@ -152,7 +151,7 @@ class MailHandler {
       });
       this.DOM.name.classList.add('disabled');
       this.DOM.email.classList.add('disabled');
-      this.DOM.body.classList.add('disabled');
+      this.DOM.message.classList.add('disabled');
       this.DOM.button.classList.add('sent');
       this.DOM.button.innerHTML = `THANKS, WE'll BE IN TOUCH`;
   }
